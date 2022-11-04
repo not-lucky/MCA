@@ -56,10 +56,10 @@ int main() {
       printf("  ");
     }
     for (int j = 1; j <= i; j++) {
-      printf("%c ", 65 + n - j);
+      printf("%c ", 'A' + n - j);
     }
     for (int j = i - 1; j >= 1; j--) {
-      printf("%c ", 65 + n - j);
+      printf("%c ", 'A' + n - j);
     }
     printf("\n");
   }
@@ -68,10 +68,10 @@ int main() {
       printf("  ");
     }
     for (int j = 1; j <= i; j++) {
-      printf("%c ", 65 + n - j);
+      printf("%c ", 'A' + n - j);
     }
     for (int j = i - 1; j >= 1; j--) {
-      printf("%c ", 65 + n - j);
+      printf("%c ", 'A' + n - j);
     }
     printf("\n");
   }
