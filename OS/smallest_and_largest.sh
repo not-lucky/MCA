@@ -19,5 +19,5 @@ for ((i=0;i<n;i++)); do
 	fi
 done
 
-echo "Smallest number is: "$smallest
-echo "Largest number is: "$largest
+echo "Smallest number is: $smallest"
+echo "Largest number is: $largest"
