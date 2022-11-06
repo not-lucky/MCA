@@ -7,4 +7,4 @@ read a
 echo "Enter the time duration (in seconds): "
 read t
 
-echo "THe final velocity is (in meter/second): $((u + a * t)) m/s."
+echo "The final velocity is (in meter/second): $((u + a * t)) m/s."

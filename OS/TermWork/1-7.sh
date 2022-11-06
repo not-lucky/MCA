@@ -1,4 +1,4 @@
-echo "Shell script to display all prime numbers in between 1 to user inputed number."
+echo "Shell script to display all prime numbers in between 1 to user entered number."
 
 echo "Enter a positive integer: "
 read n

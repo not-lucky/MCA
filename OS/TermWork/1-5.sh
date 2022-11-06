@@ -1,6 +1,6 @@
 echo "Shell script to find the factorial of a given number."
 
-echo "Enter a postive integer: "
+echo "Enter a positive integer: "
 read n
 let f=1
 

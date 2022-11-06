@@ -1,6 +1,6 @@
 echo "Shell script to check that a number that is taken as input is divisible by 3 or not."
 
-echo "Enter a positive number: "
+echo "Enter a number: "
 read n
 
 if [[ $(($n % 3)) -eq 0 ]]; then
