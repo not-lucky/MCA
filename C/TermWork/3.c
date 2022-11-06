@@ -2,7 +2,6 @@
 
 int main() {
   int side1, side2, side3;
-
   printf("Enter three sides of triangle:\n");
   scanf("%d%d%d", &side1, &side2, &side3);
 

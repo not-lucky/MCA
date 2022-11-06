@@ -1,7 +1,10 @@
 #include <stdio.h>
 
 int main() {
-  int P = 100, c = 1;
+  int P, c = 1;
+  printf("Enter a positive number: ");
+  scanf("%d", &P);
+  printf("Prime numbers between 1 and %d are:\n", P);
   for (int i = 2; c <= P; i++) {
     int prime = 1;
     for (int j = 2; j <= i / 2; j++) {
@@ -11,7 +14,7 @@ int main() {
       }
     }
     if (prime == 1) {
-      printf("%d: %d is prime.\n", c, i);
+      printf("%d\n", i);
       c++;
     }
   }
