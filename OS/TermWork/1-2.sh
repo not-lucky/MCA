@@ -1,6 +1,6 @@
 echo "Shell script to calculate the final velocity using formula v = u + (a * t)."
 
-echo "Enter the initial velocity (in meters): "
+echo "Enter the initial velocity (in meter/second): "
 read u
 echo "Enter the acceleration (in meter/second^2): "
 read a
