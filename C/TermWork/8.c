@@ -17,7 +17,7 @@ digits =  digits - ((int) log10(num));
 
 #include <stdio.h>
 
-void to_print(int x) {
+void print_num(int x) {
   switch (x) {
     {
       case 0:
@@ -55,24 +55,24 @@ void to_print(int x) {
 }
 
 int main() {
-  int num, rev_num = 0, end_zeroes = 0, actual_last_zeros = 1;
-  printf("Enter number: ");
+  int num, rev_num = 0, end_zeroes = 0, actual_last_zero = 1;
+  printf("Enter a positive number: ");
   scanf("%d", &num);
   while (num != 0) {
-    if (actual_last_zeros) {
+    if (actual_last_zero) {
       if (num % 10 == 0)
         end_zeroes++;
       else
-        actual_last_zeros = 0;
+        actual_last_zero = 0;
     }
     rev_num = rev_num * 10 + num % 10;
     num /= 10;
   }
 
-  printf("Entered number in reverse is:\n");
+  printf("Entered number in words is:\n");
 
   while (rev_num != 0) {
-    to_print(rev_num % 10);
+    print_num(rev_num % 10);
     rev_num /= 10;
   }
 

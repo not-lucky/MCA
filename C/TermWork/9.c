@@ -13,40 +13,42 @@ int main() {
   scanf("%d", &N);
 
   double fac = 1, sum = 0;
-  //   for (int i = 1; i <= N; i++) {
-  //     fac *= i;
-  //     sum += fac;
-  //   }
-  //   printf("%d\n", sum);
+  for (int i = 1; i <= N; i++) {
+    fac *= i;
+    sum += fac;
+  }
+  printf("%d\n", sum);
 
-  // sum = 0;
-  // for (int i = 1; i <= N; i++) {
-  //     sum += power(i);
-  // }
-  //     printf("%d\n", sum);
-
-  //   for (int i = 1; i <= N; i++) {
-  //     fac *= i;
-  //     sum += i/fac;
-  //   }
-  //   printf("%f", sum);
-
-  //   for (int i = 1; i <= N; i++) {
-  //     fac *= i;
-  //     sum += power(i)/fac;
-  //   }
-  //   printf("%f", sum);
-
-  //   for (int i = 1; i <= N; i++) {
-  //     fac *= i;
-  //     sum += power(i,i-1) / fac;
-  //   }
-  //   printf("%f", sum);
+  sum = 0;
+  for (int i = 1; i <= N; i++) {
+    sum += power(i, i);
+  }
+  printf("%d\n", sum);
 
   for (int i = 1; i <= N; i++) {
     fac *= i;
-    if (i % 2 == 0) sum -= fac;
-    else sum += fac;
+    sum += i / fac;
+  }
+  printf("%f", sum);
+
+  for (int i = 1; i <= N; i++) {
+    fac *= i;
+    sum += power(i, i) / fac;
+  }
+  printf("%f", sum);
+
+  for (int i = 1; i <= N; i++) {
+    fac *= i;
+    sum += power(i, i - 1) / fac;
+  }
+  printf("%f", sum);
+
+  for (int i = 1; i <= N; i++) {
+    fac *= i;
+    if (i % 2 == 0)
+      sum -= fac;
+    else
+      sum += fac;
   }
   printf("%f", sum);
 }
