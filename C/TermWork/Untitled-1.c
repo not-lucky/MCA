@@ -1,15 +1,10 @@
 #include <stdio.h>
-#include <math.h>
-
 int main() {
-  int n = 10;
-  printf("%f\n\n", sqrt(n));
-
+  int n = 5;
   for (int i = 1; i <= n; i++) {
     for (int j = 1; j <= n - i; j++) {
       printf("  ");
     }
-
     for (int j = 1; j <= i; j++) {
       printf("%c ", 'A' + n - j);
     }
@@ -23,7 +18,6 @@ int main() {
     for (int j = 1; j <= n - i; j++) {
       printf("  ");
     }
-
     for (int j = 1; j <= i; j++) {
       printf("%c ", 'A' + n - j);
     }
@@ -32,4 +26,5 @@ int main() {
     }
     printf("\n");
   }
+  return 0;
 }

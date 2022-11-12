@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>
+Forms Demo
+</title>
+</head>
+<form>
+<fieldset>
+            <legend><b>Personal Details:</b></legend>
+	First name:  <input type="text" name="first_name" value="Input Name" autofocus required/>
+	<br>
+	Last name:  <input type="text" name="last_name" />
+	<br>
+	Date of Birth : <input type="date"> 
+	User ID :  <input type="text" name="user_id" />
+	<br>
+	Password:  <input type="password" name="password" placeholder="Enter Password"/>
+	<br>
+</fieldset>
+Description : <br />
+<textarea rows="5" cols="50" name="description" >
+Input your description
+</textarea>
+<br>Enter Age:
+<input type="number" name="age" id="age" min="1" max="20" step="2" />
+<br>
+Enter Email
+<input type="email" name="num2" />
+<br>
+Choose a color
+<input type="color" name="num2" />
+<br>
+Choose a date
+<input type="date" name="num2" />
+<br>
+Gender
+ <input type="radio" name=n1 value="male" checked>Male<br>
+ <input type="radio"  name=n1 value="female">Female<br>
+<br>
+Hobbies :
+<input type="checkbox" name="hobby" value="Music" checked>Music<br>
+<input type="checkbox" name="hobby" value="Sports">Sports<br>
+Qualification : 
+<select name=s1>
+	<option value="M">M.Sc.</option>
+	<option value="B">BCA</option>
+	<option value="BS">B.Sc.</option>
+	<option value="BT" selected>B.tech</option>
+</select><br>
+  Courses  
+ <input type="text" id="C" list="Courses">  
+ <datalist id="Courses">  
+ <option value="MCA">  
+ <option value="BCA">  
+ <option value="BTech CS">   
+ <option value="BTech ME">   
+ <option value="BTech CE">   
+ <option value="BioTech">   
+ <option value="BScIT">   
+ </datalist>   <br>
+<br>
+Local Date Time (No time zone):
+<input type="datetime-local" name="datetime" id="datetime" /><br>
+Input Time: <input type="time" name="time" id="time" /><br>
+
+<input type="file" name="upload" accept="doc/*" /><br/>
+
+<input type="file" name="pic" accept="image/*"><br>
+
+ <input type="range" min="1" max="100" value="5" class="slider" id="myRange"><br>
+
+<label for="progress-bar">Uploading Document</label>
+<progress id="progress-bar" value="40" max="100">70 %</progress><br>
+<input type="search" id="search" name="search" />
+<input type="submit" name="submit" value="Click here" />
+<input type="reset" name="reset" value="Reset">
+<input type="button" name="ok" value=" Check"><br>
+<input type="image" name="imagebutton" src="redball.gif" />
+</form>
+</html>
