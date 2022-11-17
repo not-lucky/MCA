@@ -77,4 +77,31 @@ M - N
 2. Find the (r - 1)'s complement of subtrahend.
 3. Add minuend with (r - 1)'s complement of subtrahend.
     1. If sum produces a carry, **ADD THIS CARRY TO LSB OF SUM**.
-    2. If the sum doesn't produces an end carry, take the ==(r-1)'s== complement of sum and place a negative sign in front.
+    2. If the sum doesn't produces an end carry, take the **(r-1)'s** complement of sum and place a negative sign in front.
+
+
+### Logic Gates
+- Basic Building blocks of digital electronics.
+- Used to prcess binary info.
+- Applications:
+  - Designing of various logic circuits.
+
+## De Morgan's Theorem
+1. $(A+B)^{'} = A^{'}.\ B^{'}$
+2. $(A.B)^{'} = A^{'}+B^{'}$
+
+
+
+## Half adder
+- Combinational circuit _ used to add 2 binary bits.
+- 2 inputs and 2 outputs (Sum and Carry).
+- sum = xor
+- carry = and
+
+## Full adder
+- Combinational circuit _ used to add 3 binary bits.
+- 3 inputs, 2 outputs (sum and carry)
+- sum = A'B'C + AB'C' + A'BC' + ABC
+- carry = AB + BC + AC
+
+## Decoder
