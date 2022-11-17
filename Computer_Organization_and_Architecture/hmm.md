@@ -1,7 +1,9 @@
 ## BCD
 Binary Coded Decimals
 
-<details open>
+<details>
+<summary>Complements</summary>
+
 ## Complements
 - Used in digital computers _ simplifying subtraction operation and for logical manipulation.
 
@@ -41,3 +43,38 @@ m = fraction digits
 
 ### 2's complement
 - Can be obtained by adding 1 to the 1's compelement of number.
+
+</details>
+
+<details>
+
+<summary>Booth's multiplication algorithm</summary>
+
+### Booth's multiplication algorithm
+
+- Booth's multiplication algorithm provides steps to perform multiplication using binary number. 
+- Using this algorithm there will be no need to convert sign of final result if sign of multiplier and multiplicant is different.
+
+
+
+</details>
+
+### Subtraction using r's complement
+
+To subtract two positive base r numbers with minuend (M) and subtrahend (N), follow steps-  
+
+M - N
+
+1. Equate number of digits between minuend and subtrahend. If they are not equal, padding of zeros is used to make them equal. 
+2. Find the r's complement of subtrahend
+3. Add minuend with r's complement of subtrahend.
+    1. If sum produces a carry, discard it
+    2. If the sum doesn't produces an end carry, take the r's complement of sum and place a negative sign in front.
+
+### Subraction using (r - 1)'s complement
+
+1. Equate number of digits between minuend and subtrahend. If they are not equal, padding of zeros is used to make them equal. 
+2. Find the (r - 1)'s complement of subtrahend.
+3. Add minuend with (r - 1)'s complement of subtrahend.
+    1. If sum produces a carry, **ADD THIS CARRY TO LSB OF SUM**.
+    2. If the sum doesn't produces an end carry, take the ==(r-1)'s== complement of sum and place a negative sign in front.

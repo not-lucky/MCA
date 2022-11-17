@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h2.pos_left {
+    position: relative;
+    left: -50px;
+}
+
+h2.pos_right {
+    position: relative;
+    left: 20px;
+
+}
+p{
+    position: fixed;
+    top: 30px;
+    right: 5px;
+cursor:zoom-out;
+}
+p img {
+    position: absolute;
+    clip: rect(10px,60px,200px,0px);
+cursor: crosshair;
+outline-color: red;
+}
+img{
+
+cursor:no-drop;
+}
+div.relative {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    border: 3px solid #73AD21;
+} 
+
+div.absolute {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    width: 200px;
+    height: 100px;
+    border: 3px solid #73AD21;
+}
+</style>
+</head>
+<body>
+
+<h2>This is a heading with no position</h2>
+
+<h2 class="pos_left">This heading is moved left according to its normal position</h2>
+
+<h2 class="pos_right">This heading is moved right according to its normal position</h2>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>Relative positioning moves an element RELATIVE to its original position.</p>
+<p><img src="r1.png">The style "left:-20px" subtracts 20 pixels from the element's original left position.</p>
+<p>The style "left:20px" adds 20 pixels to the element's original left position.</p>
+<img src="r1.png">
+
+
+<pre>
+The position Property
+The position property specifies the type of positioning method used for an element.
+
+There are four different position values:
+
+static
+relative
+fixed
+absolute
+position: static;
+HTML elements are positioned static by default.
+
+Static positioned elements are not affected by the top, bottom, left, and right properties.
+
+An element with position: relative; is positioned relative to its normal position.
+
+Setting the top, right, bottom, and left properties of a relatively-positioned
+ element will cause it to be adjusted away from its normal position.
+ Other content will not be adjusted to fit into any gap left by the element.
+
+position: fixed;
+An element with position: fixed; is positioned relative to the viewport,
+ which means it always stays in the same place even if the page is scrolled. 
+The top, right, bottom, and left properties are used to position the element.
+
+
+position: absolute;
+An element with position: absolute; is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed).
+
+
+
+Overlapping Elements
+When elements are positioned, they can overlap other elements.
+
+The z-index property specifies the stack order of an element (which element should be placed in front of, or behind, the others).
+
+An element can have a positive or negative stack order:
+An element with greater stack order is always in front of an element 
+with a lower stack order.
+
+
+</pre>
+
+<h2>position: absolute;</h2>
+
+<p>An element with position: absolute; is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed):</p>
+
+<div class="relative">This div element has position: relative;
+  <div class="absolute">This div element has position: absolute;</div>
+</div>
+
+</body>
+</html>
