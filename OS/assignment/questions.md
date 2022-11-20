@@ -1,37 +1,44 @@
-## 1. Write your view points in justification of the statement "Operating system is the core of a computer system and is also known as a resource manager".
-Operating system is system software that manages a computer's hardware. 
+## 1. Write your view points in justification of the statement "Operating system is the core of a computer system and is also known as a resource manager"
+
+Operating system is system software that manages a computer's hardware.
 It provides application programs and is an interface over the hardware that let's user interact with the hardware with ease.
 
 It is a core of operating system because of the many functionalities it provides to the user
 
-### Convenience:
+### Convenience
+
 - OS provides a convenient access to hardware to the user without the user needing to know how the hardware actually works.
 
-### Efficiency:
+### Efficiency
+
 - Modern OS provides high throughput, because of which utilisation of computer hardware is maximized.
 
-### Resource management:
+### Resource management
+
 - Computer has a lot of resources such as, input output devices, file storage space, CPU, memory, etc.
 
 <h2>OS role as a resource manager can be seen:</h2>
 
-### Process management:
+### Process management
+
 - OS helps allocated resources to a process such as CPU time memory, access to input output devices etc.
 - It also schedules processes according to its scheduling algorithm.
 
-### Memory management:
+### Memory management
+
 - When program executes, its loaded into memory. It access instructions and data from memory. After program execution is finished, memory is declared available and made available.
 - OS keeps track of memory allocated to which process and how much.
 - Which data to load and backup and when.
 - Allocating and deallocating memory as needed.
 
-### Storage system management: 
-- Creating and deleting files / directories. 
-- Writing data securely into storage. 
+### Storage system management
+
+- Creating and deleting files / directories.
+- Writing data securely into storage.
 - Disc scheduling.
 - Caching.
 
-## 2. Write an explain key functions performed by kernel and shell of the operating system.
+## 2. Write an explain key functions performed by kernel and shell of the operating system
 
 <h2>Functions of kernel-</h2>
 ### Scheduling processes -
@@ -39,24 +46,28 @@ It is a core of operating system because of the many functionalities it provides
 - Schedules processes according to scheduling algorithm.
 
 ### Device management
-- Manage devices such as IO devices, storage devices, network devices, etc. 
+
+- Manage devices such as IO devices, storage devices, network devices, etc.
 - Manages information going to and from these devices.
 
 ### System calls
+
 - Provides system calls to interact with hardware to the user.
 
-### Interrupt handling 
+### Interrupt handling
+
 - When higher priority task comes, it executes and the current lower priority task is interrupted.
 
-### Memory management 
+### Memory management
+
 - Process when created and executed, occupies some memory. After finishing, the memory is released.
 
 <h2>Functions of shell</h2>
 
 - Interface that allows user to communicate with kernel.
 - Provides protection to kernel from malicious users /code.
-- Provides programming construct- variables, logical operators, looping and conditional statements, data structures, etc. 
-- Shell scripting to interact with system. 
+- Provides programming construct- variables, logical operators, looping and conditional statements, data structures, etc.
+- Shell scripting to interact with system.
 - Known as command interpreter- accepts a command, inteprets it, executes it, then waits for another command.
 
 ## 3. how does system call work?
@@ -65,7 +76,7 @@ It is a core of operating system because of the many functionalities it provides
 
 - When process is under execution under user mode (on behalf of user), and requires some privileged OS resources to complete, process makes a system call.
 - System call is executed in kernel mode on a priority basis.
-- When system call completes, control is passed to process in user mode. 
+- When system call completes, control is passed to process in user mode.
 - The process continuous execution in user mode.
 
 ![](20221118093905.png)  
@@ -103,14 +114,14 @@ It is a core of operating system because of the many functionalities it provides
 #### 1. Symmetric multi processing OS
 
 - Each processor executes same copy of OS, and have a shared memory.
-- New jobs can be assigned to less burdenned CPU. 
+- New jobs can be assigned to less burdenned CPU.
 - "Shared everything" as memory and IO devices are shared.
 - No master / slave processor relationship.
 
 #### 2. Asymmetric multiprocessing OS
 
 - Master / slave relationship between processor.
-- A master processor controls activities of other processors. 
+- A master processor controls activities of other processors.
 - Master processor is selected by OS and that processor then managers resources for the job it was selected for.
 
 ### Parallel processing OS
@@ -126,7 +137,7 @@ It is a core of operating system because of the many functionalities it provides
 - All these systems connecting through a single channel are considered as a single unit .
 - Allows user to continue working even if individual S/W OR H/W fails .
 
-## 5. Analyse and compare Monolithic and microkernel.
+## 5. Analyse and compare Monolithic and microkernel
 
 ### Monolithic kernel
 
@@ -145,8 +156,7 @@ It is a core of operating system because of the many functionalities it provides
 
 ![](20221118100927.png)  
 
-
-## 6. Describe hard and soft booting of an operating system . Also explore and analyse the Linux booting process . 
+## 6. Describe hard and soft booting of an operating system . Also explore and analyse the Linux booting process
 
 ### Hard (Cold) booting
 
@@ -176,10 +186,10 @@ It is a core of operating system because of the many functionalities it provides
 
    - Master Boot Record.
    - It is located in the 1st sector of the bootable disk. Typically /dev/hda, or /dev/sda
-   MBR is less than 512 bytes in size. 
-   - This has three components 
+   MBR is less than 512 bytes in size.
+   - This has three components
       1) primary boot loader info in 1st 446 bytes
-      2) partition table info in next 64 bytes 
+      2) partition table info in next 64 bytes
       3) mbr validation check in last 2 bytes.
    - Contains info about GRUB (or LILO in old systems).
    - tldr MBR loads and executes the GRUB boot loader.
@@ -226,10 +236,11 @@ It is a core of operating system because of the many functionalities it provides
    - Under the /etc/rc.d/rc*.d/ directories, you would see programs that start with S and K.
    - Programs starts with S are used during startup. S for startup. Programs starts with K are used during shutdown. K for kill.
 
-## 7. Define process , process control block PCB and context switching .
+## 7. Define process , process control block PCB and context switching
 
 #### Process
-- Program is finite set of instructions written in a particular programming language for performing particular task . 
+
+- Program is finite set of instructions written in a particular programming language for performing particular task .
 - A program during execution is called a process .
 - A process has information about it stored in PCB , i.e., program counter , registers etc .
 - Each process has a PID used to identify.
@@ -243,25 +254,31 @@ It is a core of operating system because of the many functionalities it provides
 ![](20221118104103.png)  
 
 #### Process state
+
 - Specifies process state, i.e., new, ready, running, waiting, terminated .
 
 #### Process number
+
 - Shows the number of particular process .
 
-#### Program counter.
+#### Program counter
+
 - Contains address of next instruction that needs to be executed in process .
 
 #### Registers
+
 - Specifies registers used by process, i.e., accumulators , index registers, stack pointers , etc .
 
 #### Memory limits
+
 - Info about memory management system used by OS . (page tables , segment tables)
 
 #### Open file list
+
 - Info about list of files opened for a process .
 
-
 ### Context switching
+
 - Technique used by OS to switch a process from one state to another .
 
 Steps taken when switching process P1 to process P2:
