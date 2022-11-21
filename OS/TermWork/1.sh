@@ -1,17 +1,27 @@
-#!/bin/bash
+echo "Shell Script to sort an array (whose elements are numbers)"
 
-files=0
-dir=0
-echo  "asdasdad"
-for i in $(ls)
-do
-if [ -f "$i" ]
-then
-files=$(($files + 1))
-elif [ -d $i ]
-then
-dir=$(($dir + 1))
-fi
+echo "Enter length of array to sort:"
+read n
+
+echo "Enter elements of the array:"
+for ((i=0;i<n;i++)); do
+    read arr[$i]
 done
-echo "Files = $files"
-echo "Dir = $dir"
+
+for((i=0;i<n-1;i++)); do
+    small=${arr[$i]}
+    index=$i
+
+    for((j=i;j<n;j++)); do
+        if [[ ${arr[$j]} -lt small ]]; then
+            small=${arr[$j]}
+            index=$j
+        fi
+    done
+    temp=${arr[$i]}
+    arr[$i]=$small
+    arr[$index]=$temp
+done
+
+echo "Sorted array is:"
+echo ${arr[*]}

@@ -41,7 +41,9 @@ It is a core of operating system because of the many functionalities it provides
 ## 2. Write an explain key functions performed by kernel and shell of the operating system
 
 <h2>Functions of kernel-</h2>
-### Scheduling processes -
+
+### Scheduling processes
+
 - Allocates resources to processes, i.e., CPU time, memory, access to IO devices, etc.
 - Schedules processes according to scheduling algorithm.
 
