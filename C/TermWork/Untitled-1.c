@@ -109,7 +109,7 @@ void staticStorageClass() {
 }
 int main() {
   int x = 5;
-  if (sqrt(-x)) {
+  if (!(isnan(sqrt(-x)))) {
     printf("wrong");
   } else printf("right");
   // printf("%f", sqrt(-x));
