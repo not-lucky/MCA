@@ -290,3 +290,5 @@ Steps taken when switching process P1 to process P2:
 - New process P2 is selected from a queue to execute.
 - Update PCB of P2 appropriately.
 - Resume P2 or executed it from start depending on the info in PCB of P2.
+
+![](20221121184501.png)  

@@ -101,34 +101,33 @@ Eg:
 
 1. New
 
-- program loaded into main mem.
+   - program loaded into main mem.
 
 2. Ready
-
-- after getting created, process goes into ready state (waiting for CPU). OS then picks them up.
-- process waits for CPU and reside in main memory
+   - after getting created, process goes into ready state (waiting for CPU). OS then picks them up.
+   - process waits for CPU and reside in main memory
 
 3. Running
 
-- OS choose process from ready queue (acc. to scheduling algo)
+   - OS choose process from ready queue (acc. to scheduling algo)
 
 4. Blocked/Wait
 
-- if preempted or I/O
+   - if preempted or I/O
 
 5. Terminated
 
-- after finishing execution
-- PCB wiped
+   - after finishing execution
+   - PCB wiped
 
 6. Suspend ready
 
-- proc. in ready state _ moved to second. mem from main due to lack of resources
-- if main full, and higher priority proc comes, some proc shifted to sec. mem.
+   - proc. in ready state _ moved to second. mem from main due to lack of resources
+   - if main full, and higher priority proc comes, some proc shifted to sec. mem.
 
 7. Suspend wait
 
-- proc. in waiting state _ waiting for some resources, and if wait might as well wait in sec. mem. lol
+   - proc. in waiting state _ waiting for some resources, and if wait might as well wait in sec. mem. lol
 
 ## Premptive
 
