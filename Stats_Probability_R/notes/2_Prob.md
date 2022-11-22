@@ -126,7 +126,7 @@ Event B = {2, 4, 6}
 ### Binomial Distribution
 
 - probability of a SUCCESS or FAILURE outcome in an experiment that is repeated multiple times.
-- $b(x, n, P) = nCx\ *\ P^{x}\ *\ (1\ -\ P)^{(n\ -\ x)}$  
+- $b(x, n, P) = nCx\ *\ P^{x}\*\ (1\ -\ P)^{(n\ -\ x)}$  
 , $nCx = n! / x!(n – x)!$  
 b = binomail prob.  
 x = total no. of success  

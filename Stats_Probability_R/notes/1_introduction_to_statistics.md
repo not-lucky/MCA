@@ -37,11 +37,10 @@ presenting data .
    - Measures numerical value.
    - Eg - Height, Age, etc.
 
-
    1. Discrete Data:
       Only specific value (usually whole nos.)
 
-      eg- Rolling dice, no of questions in exam. 
+      eg- Rolling dice, no of questions in exam.
    2. Continuous Data:
       Value form an interval.
 
@@ -52,14 +51,17 @@ presenting data .
 # Statistical Concepts: Variables, Branch of Statistics, Univariate, Bivariate and Multivariate data, Sampling
 
 ## Variables
-- Traits/Characteristics _ change value _ case to case.
+
+- Traits/Characteristics _change value_ case to case.
 - Causal relationship.
+
 1. Independent Variable: Can be controlled.
 2. Dependent Variable: Dependent on indep. var.
 
 ## Branch of statistics
+
 1. Descriptive Statistics:
-   - tools used to summarize _ purpose of easier interpretation. 
+   - tools used to summarize _ purpose of easier interpretation.
    - Graphs are used here.
 
 2. Inferential Statistics:
@@ -67,21 +69,25 @@ presenting data .
 
 ## Univariate, Bivariate and Multivariate data and its Analysis
 
-### Univariate Data:
+### Univariate Data
+
 - Only 1 var.
 - No causal releationship.
 
-### Bivariate Data:
+### Bivariate Data
+
 - Relationship b/w 2 vars.
 - Eg: Temp and sales of ice cream, weather and traffic accidents.
 
-### Multivariate Analysis (>3 vars):
+### Multivariate Analysis (>3 vars)
+
 - An advertiser wants to compare the popularity of four advertisement on a website,
 then their click rates could be measured for both men and women and relation
 between variable can be examined.
 
 ## Sampling
-- Process _ taking sample _ population.
+
+- Process _taking sample_ population.
 
 1. Probablity Sampling
    - Each member of pop has equal chance of being selected, randoness is element of control.
@@ -89,6 +95,7 @@ between variable can be examined.
    - Based on biased/personal judgement.
 
 Types
+
 1. Probabiltiy Sampling
    1. Simple random sampling:
       - All members same chance of being selected.
@@ -133,6 +140,7 @@ Types
    - Eg: no of student in class, no of patients seen by doctor.
 
 ## Summary Statistics
+
 - same definition as descriptive stats.
 
 3 categories
@@ -141,4 +149,3 @@ Types
 
    - tells where data centered, or upward/downward trend.
    - Mean, median, mode.
-
