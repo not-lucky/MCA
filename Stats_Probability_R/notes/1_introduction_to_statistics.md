@@ -2,11 +2,10 @@
 
 ## Statistics
 
-- Mathematical Science
-- collect, summarize, interpret, and make conclusion on the data.
+- Mathematical Science _ collect, summarize, interpret, and make conclusion on the data.
 
-- Formal definition - It’s a study of collecting organizing and summarizing and
-presenting data .
+- Formal def - collection of tools and tech. _ convert data into meaningful info.
+- Formal definition - It’s a study of collecting organizing and summarizing and presenting data .
 
 ## Statistic
 
