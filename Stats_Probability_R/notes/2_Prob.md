@@ -67,7 +67,7 @@ Event B = {2, 4, 6}
 ### Multiplication Rule
 
 - if A and B dependent event
-  - $P(A\ and\ B) = P(A) *P(B\ |\ A)\ \ \ \ OR\ \ \ \ P(B)* P(A\ |\ B)$
+  - $P(A\ and\ B) = P(A) * P(B\ |\ A)\ \ \ \ OR\ \ \ \ P(B)* P(A\ |\ B)$
 - if A and B independent event
   - $P(A\ and\ B) = P(A)\ *\ P(B)$
 
