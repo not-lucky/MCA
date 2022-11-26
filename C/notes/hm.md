@@ -88,9 +88,9 @@ format specifiers
     Constant in C  
 - Special char: (), ",", [], {}, *, &, #, .
 
-int* x = pointer
-&var = gets mem address
-*var = gets value at mem address
+int* x = pointer  
+&var = gets mem address  
+*var = gets value at mem address  
 
 ## Operators
 
@@ -98,7 +98,7 @@ int* x = pointer
 - Arithmatic: `+ - * / %`
 - Increment/Decrement: `-- ++` pre and post
 - Assignment: `= -= += *= /= %= <<= >>= &= ^= |=`
-- Realtional: `== > < != >= <=`
+- Relational: `== > < != >= <=`
 - Logical: `&& || !`
 - Bitwise: `& | ^ ~  >> <<`
 - ![](20221121025004.png)  
@@ -109,7 +109,7 @@ int* x = pointer
 - preced the type they modify
 
 1. auto
-   - defualt for local vars
+   - default for local vars
    - only used inside funcs .i.e., local vars
 
 2. registers
