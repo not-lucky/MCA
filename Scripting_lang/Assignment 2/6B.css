@@ -1,0 +1,67 @@
+*  {
+    text-align: center;
+    font-size: 1.2em;
+    background-color: grey;
+}
+
+.freepik {
+    text-decoration: underline;
+}
+
+.card1, .card2, .card3, .card4 {
+    display: inline-block;
+    margin: 0 20px;
+    width: 100%;
+    border-color: grey;
+}
+
+.pos, .name, .desc {
+    background-color: white;
+    vertical-align: middle;
+}
+
+
+.card1, .card3 {
+    background-color: white;
+    float: left;
+    width: 40%;
+    padding: 30px;
+    margin: 3% 2% 3% 4%;
+}
+
+.photo {
+    float: left;
+    height: 300px;
+    width: 300px;
+    border-radius: 70%;
+}
+
+.pos {
+    font-weight: light;
+    color: gray;
+    position: relative;
+    top: 10px;
+}
+
+.name {
+    font-weight: bold;
+    position: relative;
+    top: 30px;
+}
+.desc {
+    position: relative;
+    margin: 30px;
+    top: 50px;
+}
+
+.card2, .card4 {
+    background-color: white;
+    float: right;
+    width: 40%;
+    padding: 30px;  
+    margin: 3% 4% 3% 2%;
+}
+
+.f {
+    height: 20px;
+}

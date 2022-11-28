@@ -1,0 +1,10 @@
+div {
+    width: 200px;
+    border: black solid 3px;
+}
+
+p:first-child::first-letter {
+    font-size: 4em;
+    line-height: 90%;
+    float: left;
+}

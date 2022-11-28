@@ -1,0 +1,90 @@
+body {
+    background: url(milky_way.jpg);
+    background-size: cover;
+    color: white;
+}
+
+.top-flag {
+    max-height: 50px;
+    border: solid white 2px;
+    border-radius: 80%;
+    padding: 5px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.t {
+    color: white;
+}
+
+.anchor {
+    margin: 10px;
+}
+
+.navbar {
+    margin-top: 20px;
+    float: right;
+    font-size: 1.3em;
+}
+
+.signin {
+    color: white;
+    padding: 15px;
+    border: white solid 2px;
+}
+
+.signup {
+    padding: 15px;
+    border: solid black 2px;
+    background-color: yellow;
+    color: black;
+}
+
+.not-top-flag {
+    max-height: 200px;
+    border: solid white 2px;
+    border-radius: 80%;
+    padding: 5px;
+    background-color: yellow;
+
+    display: block;
+    margin: 20px auto;
+}
+
+.main-content {
+    text-align: center;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.main {
+    font-family: sans-serif;
+    font-size: 6em;
+}
+
+.somewhat-main {
+    font-style: italic;
+    font-size: 3em;
+    margin: 20px 0 40px 0;
+
+}
+
+.left {
+    padding: 10px;
+    margin: 0 30px;
+    border: solid white 3px;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+    color: white;
+}
+
+.right {
+    padding: 10px;
+    margin: 0 30px;
+    border: solid white 3px;
+    background-color: blue;
+    font-weight: bold;
+    color: white;
+}
