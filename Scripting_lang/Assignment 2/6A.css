@@ -1,5 +1,5 @@
 body {
-    background: url(milky_way.jpg);
+    background-image: url(milky_way.jpg);
     background-size: cover;
     color: white;
 }
