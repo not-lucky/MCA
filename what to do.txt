@@ -1,0 +1,13 @@
+an all encompassing site to let you use apis that i find interresting
+flight, flash card, quiz, colormind, upscale, animefy, translate, text to image, summazizer, spleeter(audio one)
+
+Blog Site
+Flight Finder
+FLASH CARD GUI
+QUIZ GUI
+Colormind API
+osu! api for tournament pools, beatmap downloader, etc.
+automated dinosaur game
+
+K map quine mcclusky
+TEXT SUMMARIZER
