@@ -12,7 +12,7 @@ for((i=0;i<n-1;i++)); do
     small=${arr[$i]}
     index=$i
 
-    for((j=i;j<n;j++)); do
+    for((j=i+1;j<n;j++)); do
         if [[ ${arr[$j]} -lt small ]]; then
             small=${arr[$j]}
             index=$j
