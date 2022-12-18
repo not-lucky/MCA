@@ -1,18 +1,17 @@
-def maximumSubarraySum(arr):
-    n = len(arr)
-    maxSum = -1e8
-    currSum = 0
+from string import ascii_uppercase
 
-    for i in range(0, n):
-        currSum = currSum + arr[i]
-        if (currSum > maxSum):
-            maxSum = currSum
-        if (currSum < 0):
-            currSum = 0
+a = list(
+    map(lambda x: ''.join([c for c in x if c in ascii_uppercase]),
+        input().split()))
 
-    return maxSum
+a.sort()
 
+dic = {}
 
-if __name__ == "__main__":
-    # Your code goes here
-    print(maximumSubarraySum([-2, -5, -1, -3, -8, -2, -6, -8, -5]))
+for i in a:
+    for c in i:
+        dic[c] = dic.get(c, 0) + 1
+
+a = [k for k in dic.keys()]
+for i in range(0, len(a)):
+    
