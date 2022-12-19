@@ -1,10 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-int main() {
-//   int arr[10];
-  int* arr = malloc(sizeof(int) * 5);
-  for (int i = 0; i < 1000; i++) {
-    printf("Addr: %d, Value: %d\n", &arr[i], arr[i]);
-  }
+#define MSG1 "This is a program."
+int main(void) {
+  const char msg[] = MSG1;
+  puts(msg);
+  return 0;
 }
