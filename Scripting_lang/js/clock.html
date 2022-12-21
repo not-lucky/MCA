@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #clock {
+      font-family: sans-serif;
+      color: white;
+      background-color: seashell;
+      padding: 20px;
+      text-align: center;
+      font-size: 48px;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock"></div>
+  <script>
+    function displayTime() {
+      let currentTime = new Date();
+
+      let hours = currentTime.getHours();
+      let minutes = currentTime.getMinutes();
+      let seconds = currentTime.getSeconds();
+
+      if (hours < 10) {
+        hours = "0" + hours;
+      }
+      if (minutes < 10) {
+        minutes = "0" + minutes;
+      }
+      if (seconds < 10) {
+        seconds = "0" + seconds;
+      }
+
+      let timeString = hours + ":" + minutes + ":" + seconds;
+
+      document.getElementById("clock").innerHTML = timeString;
+    }
+
+    setInterval(displayTime, 1000);
+  </script>
+</body>
+</html>

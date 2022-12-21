@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>color select</title>
+</head>
+<body>
+	<select id='colors' onchange='change_bg()'>
+		<option value="Green">Green</option>
+		<option value="Blue">Blue</option>
+		<option value="Red">Red</option>
+		<option value="White">White</option>
+		<option value="Black">Black</option>
+		<option value="Grey">Grey</option>
+	</select>
+
+	<script type="text/javascript">
+		function change_bg() {
+			let col = document.getElementById('colors').value;
+			document.body.style.backgroundColor = col;
+		}
+	</script>
+</body>
+</html>
