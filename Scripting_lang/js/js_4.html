@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <style>
@@ -25,6 +25,50 @@
 
       document.getElementById("display").innerHTML = input;
     }
+  </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .highlight {
+      color: red;
+      background-color: yellow;
+      font-size: 24px;
+    }
+
+    #output {
+      border: solid black 5px;
+      padding: 30px;
+    }
+  </style>
+</head>
+<body>
+  <form id="inputForm">
+    <label for="inputText">Enter some text:</label><br>
+    <!-- <input type="text" id="inputText" name="inputText"><br> -->
+    <textarea name="" id="inputText" cols="30" rows="10"></textarea><br>
+    <input type="submit" value="Submit">
+  </form>
+  
+  <p>
+    The following is the text entered in the textbox above but font is colored red and background color is yellow. :)
+    <br>
+    <div id="output" style='white-space:pre'></div>
+  </p>
+  
+  <script>
+    document.getElementById('inputForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // prevent the form from submitting
+      
+      var input = document.getElementById('inputText').value;
+      var output = '<span class="highlight">' + input + '</span>';
+      
+      document.getElementById('output').innerHTML = output;
+    });
   </script>
 </body>
 </html>

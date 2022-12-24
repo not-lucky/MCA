@@ -23,19 +23,17 @@
 
     <script>
         document.getElementById('registrationForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // prevent the form from submitting
+            event.preventDefault();
 
             var name = document.getElementById('name').value;
             var age = document.getElementById('age').value;
-            var isValid = true; // assume the form is valid until proven otherwise
+            var isValid = true;
 
-            // validate that no fields are blank
             if (!name || !age) {
                 isValid = false;
                 alert('All fields are required');
             }
 
-            // validate that age is a number and is greater than 18
             if (isNaN(age) || age < 18) {
                 isValid = false;
                 document.getElementById('ageError').innerHTML = 'Age must be a number greater than 18';
@@ -43,7 +41,6 @@
                 document.getElementById('ageError').innerHTML = '';
             }
 
-            // validate that name does not contain any special characters or numbers
             if (/[^a-zA-Z]/.test(name)) {
                 isValid = false;
                 document.getElementById('nameError').innerHTML = 'Name must contain only letters';
@@ -52,11 +49,9 @@
             }
 
             if (isValid) {
-                // submit the form if all validation checks pass
                 this.submit();
             }
         });
-
     </script>
 </body>
 
