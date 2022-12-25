@@ -7,16 +7,12 @@
   <button onclick="openWindow()">Open New Window</button>
   <script>
     function openWindow() {
-      // Open a new window
       let newWindow = window.open("", "Test", "height=400,width=400");
 
-      // Write some text in the new window
       newWindow.document.write('<h1>test</h1>');
 
-      // Display a confirm box to ask the user if they want to close the window
       let closeWindow = confirm("Do you want to close the window?");
 
-      // If the user clicks OK, close the window
       if (closeWindow) {
         newWindow.close();
       }
