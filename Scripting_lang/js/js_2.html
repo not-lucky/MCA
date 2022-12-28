@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ayush_Rawat MCA-B 26</title>
+  </head>
+  <body>
+  	<p id='words'></p>
+  	<p id='characters'></p>
+  	<p id='vowels'></p>
+  	<p id='consonants'></p>
+    <script>
+			const inputString = prompt("Enter a string:");
+
+			let numWords = 0;
+			let numChars = 0;
+			let numVowels = 0;
+			let numConsonants = 0;
+
+			if (inputString) {
+			  numWords = 1;
+			  for (let i = 0; i < inputString.length; i++) {
+			    let ch = inputString[i].toLowerCase();
+
+			    if (ch == ' ') {
+			      numWords++;
+			    }
+			    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+			      numVowels++;
+			    } else if (ch >= 'a' && ch <= 'z') {
+			      numConsonants++;
+			    }
+
+			    numChars++;
+			  }
+			}
+
+			let words = `Number of words: ${numWords}`;
+			let characters = `Number of characters: ${numChars}`;
+			let vowels = `Number of vowels: ${numVowels}`;
+			let consonants = `Number of consonants: ${numConsonants}`;
+
+			document.getElementById('words').innerHTML = words;
+			document.getElementById('characters').innerHTML = characters;			
+			document.getElementById('vowels').innerHTML = vowels;
+			document.getElementById('consonants').innerHTML = consonants;
+    </script>
+  </body>
+</html>

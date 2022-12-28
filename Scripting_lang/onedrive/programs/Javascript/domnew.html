@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to make a BUTTON element with text.</p>
+
+<input type="button" onClick="myFunction()" value="Try it">
+<br><br><br><br><br>
+<ul id="myList"><li>B.Tech</li><li>M.Tech</li></ul>
+
+<p id="demo">Click the button to append an item to the list Welcome check the content </p>
+
+<button onclick="myFunction1()">Append</button>
+<button onclick="myFunction2()">Delete</button>
+<button onclick="myFunction3()">insert after the first child</button> This is a code to test dom methods
+<script>
+function myFunction() { 
+    var btn = document.createElement("BUTTON");
+    var t = document.createTextNode("CLICK ME");
+    btn.appendChild(t);
+    document.getElementById("demo").appendChild(btn);
+var t = document.createTextNode("Hello World");
+    document.getElementById("demo").appendChild(t);
+}
+function myFunction1()
+{
+var node=document.createElement("LI");
+var textnode=document.createTextNode("MCA");
+node.appendChild(textnode);
+document.getElementById("myList").appendChild(node);
+}
+function myFunction2()
+{
+var list=document.getElementById("myList");
+list.removeChild(list.childNodes[0]);
+}
+function myFunction3() {
+    var newItem = document.createElement("LI")
+    var textnode = document.createTextNode("B.S")
+    newItem.appendChild(textnode)
+
+    var list = document.getElementById("myList")
+    list.insertBefore(newItem, list.childNodes[1]);
+}
+</script>
+
+</body>
+</html>

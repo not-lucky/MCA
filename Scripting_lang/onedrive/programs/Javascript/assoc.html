@@ -1,0 +1,23 @@
+<html>
+<SCRIPT language="JavaScript">
+
+function test()
+{
+var Array1 = new Array();
+Array1['city'] = "Dehradun";
+Array1['state'] = "Uttrakhand";
+Array1['country'] = "India";
+document.write(Array1.length);
+
+document.write("State is: " + Array1['state']+"<br>");
+document.write("City is: " + Array1.city); 
+
+var person = {firstName:"Chetan", lastName:"Bhagat", age:40};
+document.write("<br>",person["firstName"]);
+}
+
+</SCRIPT>
+<FORM>
+<INPUT TYPE="button" onClick="test()" value="Go!">
+</FORM>
+<html>

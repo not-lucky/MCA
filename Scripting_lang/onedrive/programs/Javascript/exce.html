@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <script type="text/JavaScript">
+     function myFunction() {
+    const x = 50;
+    const y = 0;
+    try {
+        if (y === 0) {
+            throw ("This is division by zero error");
+        } else {
+            const z = x / y;
+        }
+    } catch (error) {
+        alert("Error: " + error);
+    }
+}
+function myFunction1() {
+    const j = 70;
+var a=10
+    try {
+        alert("The value of j is : " + j);
+alert(a/0)
+document.write("Check")
+    } catch (error) {
+        alert("Error: " + error.message);
+    } finally {
+        alert("Finally: Finally gets executed")
+    }
+}
+     </script>
+</head>
+<body>
+   
+     <p>Click the button to see the output</p>
+     <button type="button" onclick="myFunction()">Click Here</button>
+<button type="button" onclick="myFunction1()">Click Here</button>
+</body>
+</html>

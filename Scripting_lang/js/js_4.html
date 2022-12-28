@@ -1,38 +1,8 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-  <style>
-    input[type="text"] {
-      width: 500px;
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-    #display {
-      background-color: yellow;
-      color: red;
-      font-size: 24px;
-      padding: 10px;
-    }
-  </style>
-</head>
-<body>
-  <input type="text" id="input">
-  <button onclick="displayInput()">Display Input</button>
-  <div id="display"></div>
-  <script>
-    function displayInput() {
-      let input = document.getElementById("input").value;
-
-      document.getElementById("display").innerHTML = input;
-    }
-  </script>
-</body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Ayush_Rawat MCA-B 26</title>
+
   <style>
     .highlight {
       color: red;
@@ -49,7 +19,6 @@
 <body>
   <form id="inputForm">
     <label for="inputText">Enter some text:</label><br>
-    <!-- <input type="text" id="inputText" name="inputText"><br> -->
     <textarea name="" id="inputText" cols="30" rows="10"></textarea><br>
     <input type="submit" value="Submit">
   </form>
@@ -62,7 +31,7 @@
   
   <script>
     document.getElementById('inputForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // prevent the form from submitting
+      event.preventDefault();
       
       var input = document.getElementById('inputText').value;
       var output = '<span class="highlight">' + input + '</span>';
