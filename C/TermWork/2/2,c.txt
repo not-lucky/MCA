@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+// Function to rearrange the array in the desired order
+void rearrange(int *a, int n)
+{
+    // create a temporary array to store the rearranged elements
+    int temp[n];
+
+    // index variable for the temporary array
+    int p = 0;
+
+    // fill the temporary array with the rearranged elements
+    for (int i = 0; i < n; i++)
+    {
+        if (i % 2 == 0)
+            temp[p++] = a[i];
+        else
+            temp[--p] = a[i];
+    }
+
+    // copy the elements from the temporary array back to the original array
+    for (int i = 0; i < n; i++)
+        a[i] = temp[i];
+}
+
+int main()
+{
+    int a[] = {1, 2, 3, 4, 5, 6, 7, 8};
+    int n = sizeof(a) / sizeof(a[0]);
+
+    rearrange(a, n);
+
+    // print the rearranged array
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+
+    return 0;
+}
