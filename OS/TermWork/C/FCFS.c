@@ -36,7 +36,7 @@ void findStartingTimeAndCompletionTime(struct Process processes[], int n) {
   // Initialize the starting time and completion time of the first process
   processes[0].startingTime = processes[0].arrivalTime;
   processes[0].completionTime =
-      processes[0].startingTime + processes[0].burstTime;
+      processes[0].startingTime + processes[0].burstTime + processes[0].ioBurstTime;
 
   // Calculate the starting time and completion time of the rest of the
   // processes
