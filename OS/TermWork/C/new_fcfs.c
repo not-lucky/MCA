@@ -1,71 +1,71 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct Process {
-  int processId;    // Process ID
-  int arrivalTime;  // Arrival time
-  int cpuBurst;     // CPU burst time
-  int ioBurst;      // I/O burst time
-} Process;
-
+/*
+        First-Come-First-Serve Process Scheduling
+        Non-Preemptive
+*/
+#include "stdio.h"
+#include "stdlib.h"
+struct process {
+  int process_id;
+  int arrival_time;
+  int burst_time;
+  int waiting_time;
+  int turn_around_time;
+};
 int main() {
-  // Initialize the process queue
-  Process processQueue[10];
-  int numProcesses = 0;
-
-  // Read in the process data from the user
-  printf("Enter the number of processes: ");
-  scanf("%d", &numProcesses);
-
-  for (int i = 0; i < numProcesses; i++) {
-    printf("Enter data for process %d:\n", i + 1);
-    printf("  Arrival time: ");
-    scanf("%d", &processQueue[i].arrivalTime);
-    printf("  CPU burst time: ");
-    scanf("%d", &processQueue[i].cpuBurst);
-    printf("  I/O burst time: ");
-    scanf("%d", &processQueue[i].ioBurst);
-    processQueue[i].processId = i + 1;
+  int n, i;
+  printf("Enter number of processes: ");
+  scanf("%d", &n);
+  struct process proc[n];
+  for (i = 0; i < n; i++) {
+    printf("\n");
+    printf("Enter arrival time for process%d: ", i + 1);
+    scanf("%d", &proc[i].arrival_time);
+    printf("Enter burst time for process%d: ", i + 1);
+    scanf("%d", &proc[i].burst_time);
+    proc[i].process_id = i + 1;
   }
 
-  // Initialize the current time to 0
-  int currentTime = processQueue[0].arrivalTime;
-
-  // Initialize the waiting time and turnaround time for each process to 0
-  int waitingTimes[10] = {0};
-  int turnaroundTimes[10] = {0};
-
-  // Iterate through the process queue
-  for (int i = 0; i < numProcesses; i++) {
-    // Calculate the waiting time for this process
-    waitingTimes[i] = currentTime - processQueue[i].arrivalTime;
-
-    // Calculate the turnaround time for this process
-    turnaroundTimes[i] =
-        waitingTimes[i] + processQueue[i].cpuBurst + processQueue[i].ioBurst;
-
-    // Update the current time
-    currentTime += processQueue[i].cpuBurst + processQueue[i].ioBurst;
+  for (int i = 0; i < n - 1; i++) {
+    int min_ind = i;
+    for (int j = i + 1; j < n; j++) {
+      if (proc[j].arrival_time < proc[min_ind].arrival_time) {
+        min_ind = j;
+      }
+    }
+    struct process temp = proc[i];
+    proc[i] = proc[min_ind];
+    proc[min_ind] = temp;
   }
 
-  // Calculate the average waiting time and turnaround time
-  float avgWaitingTime = 0;
-  float avgTurnaroundTime = 0;
-  for (int i = 0; i < numProcesses; i++) {
-    avgWaitingTime += waitingTimes[i];
-    avgTurnaroundTime += turnaroundTimes[i];
-  }
-  avgWaitingTime /= numProcesses;
+  int service_time[n];
+  service_time[0] = 0;
+  proc[0].waiting_time = 0;
 
-  // Print the results
-  printf("\nProcess Scheduling Results (FCFS):\n");
-  for (int i = 0; i < numProcesses; i++) {
-    printf("Process %d:\n", processQueue[i].processId);
-    printf(" Waiting time: %d\n", waitingTimes[i]);
-    printf(" Turnaround time: %d\n", turnaroundTimes[i]);
-  }
-  printf("Average waiting time: %.2f\n", avgWaitingTime);
-  printf("Average turnaround time: %.2f\n", avgTurnaroundTime);
+  for (i = 1; i < n; i++) {
+    service_time[i] = service_time[i - 1] + proc[i - 1].burst_time;
+    proc[i].waiting_time = service_time[i] - proc[i].arrival_time;
 
-  return 0;
+    if (proc[i].waiting_time < 0) proc[i].waiting_time = 0;
+  }
+
+  for (i = 0; i < n; i++) {
+    proc[i].turn_around_time = proc[i].burst_time + proc[i].waiting_time;
+  }
+  printf("\n\n");
+  printf(
+      "Process\tBurst Time\tArrival Time\tWaiting Time\tTurn-Around "
+      "Time\tCompletion Time\n");
+  int total_waiting_time = 0, total_turn_around_time = 0;
+  for (i = 0; i < n; i++) {
+    total_waiting_time += proc[i].waiting_time;
+    total_turn_around_time += proc[i].turn_around_time;
+
+    int completion_time = proc[i].turn_around_time + proc[i].arrival_time;
+
+    printf("%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n", proc[i].process_id,
+           proc[i].burst_time, proc[i].arrival_time, proc[i].waiting_time,
+           proc[i].turn_around_time, completion_time);
+  }
+  printf("Average waiting time: %f\n", (float)total_waiting_time / n);
+  printf("Average turn around time: %f\n", (float)total_turn_around_time / n);
 }
