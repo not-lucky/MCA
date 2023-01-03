@@ -18,11 +18,12 @@ int main() {
   struct process proc[n];
   for (i = 0; i < n; i++) {
     printf("\n");
-    printf("Enter arrival time for process%d: ", i + 1);
+    printf("Enter process ID: ");
+    scanf("%d", &proc[i].process_id);
+    printf("Enter arrival time for process%d: ", proc[i].process_id);
     scanf("%d", &proc[i].arrival_time);
-    printf("Enter burst time for process%d: ", i + 1);
+    printf("Enter burst time for process%d: ", proc[i].process_id);
     scanf("%d", &proc[i].burst_time);
-    proc[i].process_id = i + 1;
   }
 
   for (int i = 0; i < n - 1; i++) {

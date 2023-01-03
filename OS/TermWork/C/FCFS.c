@@ -12,6 +12,20 @@ struct Process {
   int turnaroundTime;  // Turnaround time
 };
 
+void sortProcesses(struct Process proc[], int n) {
+  for (int i = 0; i < n - 1; i++) {
+    int min_ind = i;
+    for (int j = i + 1; j < n; j++) {
+      if (proc[j].arrivalTime < proc[min_ind].arrivalTime) {
+        min_ind = j;
+      }
+    }
+    struct Process temp = proc[i];
+    proc[i] = proc[min_ind];
+    proc[min_ind] = temp;
+  }
+}
+
 // Function to find the waiting time and turnaround time of each process
 void findWaitingTimeAndTurnaroundTime(struct Process processes[], int n) {
   // Initialize waiting time of the first process to 0
@@ -35,8 +49,9 @@ void findWaitingTimeAndTurnaroundTime(struct Process processes[], int n) {
 void findStartingTimeAndCompletionTime(struct Process processes[], int n) {
   // Initialize the starting time and completion time of the first process
   processes[0].startingTime = processes[0].arrivalTime;
-  processes[0].completionTime =
-      processes[0].startingTime + processes[0].burstTime + processes[0].ioBurstTime;
+  processes[0].completionTime = processes[0].startingTime +
+                                processes[0].burstTime +
+                                processes[0].ioBurstTime;
 
   // Calculate the starting time and completion time of the rest of the
   // processes
@@ -62,6 +77,7 @@ int main() {
 
   int n = sizeof(processes) / sizeof(processes[0]);  // Number of processes
 
+  sortProcesses(processes, n);
   // Find the starting time and completion time of each process
   findStartingTimeAndCompletionTime(processes, n);
 

@@ -40,7 +40,7 @@ int main() {
     num_requests--;
     total_seek_distance += min_seek_time;
   }
-  printf("\nTotal Seek Distance: %d", total_seek_distance);
+  printf("\nTotal Head Movements: %d", total_seek_distance);
 
   return 0;
 }
