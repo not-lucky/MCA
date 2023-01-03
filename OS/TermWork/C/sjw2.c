@@ -41,7 +41,7 @@ int main() {
     processes[min_ind] = temp;
   }
 
-  // Schedule the processes using FCFS
+  // Schedule the processes using SJF
   printf(
       "\nProcess\tArrival Time\tBurst Time\tStart Time\tCompletion "
       "Time\tTurnaround Time\tWaiting Time\n");
@@ -52,6 +52,10 @@ int main() {
                        ? current_time
                        : processes[i].arrival_time;
     // Set the start time and completion time for the current process
+    struct Process to_work = processes[i];
+    for (int j = i + 1; j < num_processes; j++) {
+        if 
+    }
     processes[i].start_time = current_time;
     processes[i].completion_time = current_time + processes[i].burst_time;
     // Calculate the turnaround time and waiting time for the current process
