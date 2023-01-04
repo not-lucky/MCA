@@ -6,7 +6,6 @@ int main() {
   int num_requests;
   int head_position;
   int total_seek_distance = 0;
-
   printf("Enter the number of disk requests: ");
   scanf("%d", &num_requests);
   int requests[num_requests];

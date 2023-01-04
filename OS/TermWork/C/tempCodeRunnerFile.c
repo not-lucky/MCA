@@ -1,95 +1,88 @@
+#include <limits.h>
 #include <stdio.h>
-#include <stdlib.h>
 
-#define MAX_REQUESTS 100
+struct Process {
+  int id;
+  int arrival_time;
+  int burst_time;
+  int start_time;
+  int completion_time;
+  int turnaround_time;
+  int waiting_time;
+  int completed;
+};
 
 int main() {
-  int num_requests;
-  int requests[MAX_REQUESTS] = {0};
-  int head_position;
-  int direction;
-  int total_seek_operations;
-  int disk_size;
-
-  printf("Enter the number of disk requests: ");
-  scanf("%d", &num_requests);
-
-  printf("Enter the disk size: ");
-  scanf("%d", &disk_size);
-
-  printf("Enter the disk requests: ");
-  for (int i = 0; i < num_requests; i++) {
-    scanf("%d", &requests[i]);
+  int num_processes;
+  printf("Enter the number of processes: ");
+  scanf("%d", &num_processes);
+  struct Process processes[num_processes];
+  for (int i = 0; i < num_processes; i++) {
+    printf("Enter id, arrival time, and burst time for process %d: ", i + 1);
+    scanf("%d%d%d", &processes[i].id, &processes[i].arrival_time,
+          &processes[i].burst_time);
+    processes[i].completed = 0;
   }
-
-  printf("Enter the current head position: ");
-  scanf("%d", &head_position);
-  int temp_head_position = head_position;
-
-  printf("Enter the direction (0 for left, 1 for right): ");
-  scanf("%d", &direction);
-
-  for (int i = 0; i < num_requests - 1; i++) {
+  for (int i = 0; i < num_processes - 1; i++) {
     int min_ind = i;
-    for (int j = i + 1; j < num_requests; j++) {
-      if (requests[j] < requests[min_ind]) {
+    for (int j = i + 1; j < num_processes; j++) {
+      if (processes[j].arrival_time < processes[min_ind].arrival_time)
         min_ind = j;
+    }
+    struct Process temp = processes[i];
+    processes[i] = processes[min_ind];
+    processes[min_ind] = temp;
+  }
+  double avg_TAT = 0, avg_WT = 0;
+  printf(
+      "\nProcess ID\tArrival Time\tBurst Time\tStart Time\tCompletion "
+      "Time\tTurnaround Time\tWaiting Time\n");
+  int current_time = 0;
+  int total_completed = 0;
+  while (total_completed != num_processes) {
+    int i = 0;
+    if (processes[i].completed == 1) {
+      i++;
+      continue;
+    }
+    current_time = current_time > processes[i].arrival_time
+                       ? current_time
+                       : processes[i].arrival_time;
+    int to_work_ID = i;
+    int min_burst = INT_MAX;
+    for (int j = 0; j < num_processes; j++) {
+      if (processes[j].completed == 0 &&
+          processes[j].arrival_time <= current_time &&
+          processes[j].burst_time < min_burst) {
+        to_work_ID = j;
+        min_burst = processes[j].burst_time;
       }
     }
-    int temp = requests[i];
-    requests[i] = requests[min_ind];
-    requests[min_ind] = temp;
+    processes[to_work_ID].start_time = current_time;
+    processes[to_work_ID].completion_time =
+        current_time + processes[to_work_ID].burst_time;
+    processes[to_work_ID].turnaround_time =
+        processes[to_work_ID].completion_time -
+        processes[to_work_ID].arrival_time;
+    processes[to_work_ID].waiting_time =
+        processes[to_work_ID].start_time - processes[to_work_ID].arrival_time;
+    current_time += processes[to_work_ID].burst_time;
+    processes[to_work_ID].completed = 1;
+    total_completed++;
+    if (processes[to_work_ID].completed == 0 &&
+        processes[to_work_ID].id != processes[i].id) {
+      i--;
+    }
+    avg_TAT += processes[to_work_ID].turnaround_time;
+    avg_WT += processes[to_work_ID].waiting_time;
+    printf("%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n", processes[to_work_ID].id,
+           processes[to_work_ID].arrival_time, processes[to_work_ID].burst_time,
+           processes[to_work_ID].start_time,
+           processes[to_work_ID].completion_time,
+           processes[to_work_ID].turnaround_time,
+           processes[to_work_ID].waiting_time);
   }
 
-  total_seek_operations = 0;
-
-  // Schedule the requests using SCAN
-  printf("\nScheduled requests: ");
-  if (direction == 0) {
-    // Move left first
-    for (int i = num_requests - 1; i >= 0; i--) {
-      if (requests[i] <= head_position) {
-        printf("%d ", requests[i]);
-        total_seek_operations += abs(requests[i] - temp_head_position);
-        temp_head_position = requests[i];
-      }
-    }
-    // Move right
-    total_seek_operations += temp_head_position - 0;
-    temp_head_position = 0;
-    printf("%d ", temp_head_position);
-    for (int i = 0; i < num_requests; i++) {
-      if (requests[i] > head_position) {
-        printf("%d ", requests[i]);
-        total_seek_operations += abs(requests[i] - temp_head_position);
-        temp_head_position = requests[i];
-      }
-    }
-  } else {
-    // Move right first
-    for (int i = 0; i < num_requests; i++) {
-      if (requests[i] >= head_position) {
-        printf("%d ", requests[i]);
-        total_seek_operations += abs(requests[i] - head_position);
-        head_position = requests[i];
-      }
-    }
-    // Move left
-    total_seek_operations += disk_size - temp_head_position;
-    temp_head_position = disk_size;
-    printf("%d ", temp_head_position);
-
-    for (int i = num_requests - 1; i >= 0; i--) {
-      if (requests[i] < head_position) {
-        printf("%d ", requests[i]);
-        total_seek_operations += abs(requests[i] - temp_head_position);
-        temp_head_position = requests[i];
-      }
-    }
-  }
-  printf("\n");
-
-  printf("Total seek operations: %d\n", total_seek_operations);
-
-  return 0;
+  printf("\nAverage Turnaround Time is: %f\nAverage Waiting Time is: %f",
+         avg_TAT / num_processes, avg_WT / num_processes);
 }

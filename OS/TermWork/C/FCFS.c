@@ -57,7 +57,7 @@ int main() {
 
     avg_TAT += processes[i].turnaround_time;
     avg_WT += processes[i].waiting_time;
-    // Update the current time
+
     current_time += processes[i].burst_time;
 
     printf("%d\t%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n", processes[i].id,
