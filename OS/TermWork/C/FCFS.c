@@ -1,98 +1,71 @@
 #include <stdio.h>
 
-// Structure to represent a process
 struct Process {
-  int pid;             // Process ID
-  int burstTime;       // CPU burst time
-  int arrivalTime;     // Arrival time
-  int ioBurstTime;     // IO burst time
-  int startingTime;    // Starting time
-  int completionTime;  // Completion time
-  int waitingTime;     // Waiting time
-  int turnaroundTime;  // Turnaround time
+  int id;
+  int arrival_time;
+  int burst_time;
+  int start_time;
+  int completion_time;
+  int turnaround_time;
+  int waiting_time;
 };
 
-void sortProcesses(struct Process proc[], int n) {
-  for (int i = 0; i < n - 1; i++) {
+int main() {
+  int num_processes;
+
+  printf("Enter the number of processes: ");
+  scanf("%d", &num_processes);
+
+  struct Process processes[num_processes];
+
+  for (int i = 0; i < num_processes; i++) {
+    printf("Enter id, arrival time, and burst time for process %d: ", i + 1);
+    scanf("%d%d%d", &processes[i].id, &processes[i].arrival_time,
+          &processes[i].burst_time);
+  }
+
+  for (int i = 0; i < num_processes - 1; i++) {
     int min_ind = i;
-    for (int j = i + 1; j < n; j++) {
-      if (proc[j].arrivalTime < proc[min_ind].arrivalTime) {
+    for (int j = i + 1; j < num_processes; j++) {
+      if (processes[j].arrival_time < processes[min_ind].arrival_time) {
         min_ind = j;
       }
     }
-    struct Process temp = proc[i];
-    proc[i] = proc[min_ind];
-    proc[min_ind] = temp;
+    struct Process temp = processes[i];
+    processes[i] = processes[min_ind];
+    processes[min_ind] = temp;
   }
-}
 
-// Function to find the waiting time and turnaround time of each process
-void findWaitingTimeAndTurnaroundTime(struct Process processes[], int n) {
-  // Initialize waiting time of the first process to 0
-  processes[0].waitingTime = 0;
+  double avg_TAT = 0, avg_WT = 0;
 
-  // Calculate waiting time and turnaround time of the rest of the processes
-  for (int i = 1; i < n; i++) {
-    // Waiting time of the current process is the sum of the completion time of
-    // the previous process and the burst time and IO burst time of the previous
-    // process
-    processes[i].waitingTime =
-        processes[i - 1].completionTime - processes[i].arrivalTime;
-    // Turnaround time of the current process is the sum of the waiting time and
-    // burst time of the current process
-    processes[i].turnaroundTime =
-        processes[i].waitingTime + processes[i].burstTime;
-  }
-}
-
-// Function to find the starting time and completion time of each process
-void findStartingTimeAndCompletionTime(struct Process processes[], int n) {
-  // Initialize the starting time and completion time of the first process
-  processes[0].startingTime = processes[0].arrivalTime;
-  processes[0].completionTime = processes[0].startingTime +
-                                processes[0].burstTime +
-                                processes[0].ioBurstTime;
-
-  // Calculate the starting time and completion time of the rest of the
-  // processes
-  for (int i = 1; i < n; i++) {
-    // Starting time of the current process is the sum of the completion time of
-    // the previous process and the IO burst time of the previous process
-    processes[i].startingTime =
-        processes[i - 1].completionTime + processes[i - 1].ioBurstTime;
-    // Completion time of the current process is the sum of the starting time
-    // and burst time of the current process
-    processes[i].completionTime =
-        processes[i].startingTime + processes[i].burstTime;
-  }
-}
-
-int main() {
-  // Define an array of processes
-  struct Process processes[] = {{1, 6, 1, 2, 0, 0, 0, 0},
-                                {2, 8, 3, 1, 0, 0, 0, 0},
-                                {3, 7, 0, 3, 0, 0, 0, 0},
-                                {4, 3, 2, 1, 0, 0, 0, 0},
-                                {5, 4, 4, 2, 0, 0, 0, 0}};
-
-  int n = sizeof(processes) / sizeof(processes[0]);  // Number of processes
-
-  sortProcesses(processes, n);
-  // Find the starting time and completion time of each process
-  findStartingTimeAndCompletionTime(processes, n);
-
-  // Find the waiting time and turnaround time of each process
-  findWaitingTimeAndTurnaroundTime(processes, n);
-
-  // Print the results
   printf(
-      "Process ID\tStarting Time\tCompletion Time\tTurnaround Time\tWaiting "
-      "Time\n");
-  for (int i = 0; i < n; i++) {
-    printf("%d\t\t%d\t\t%d\t\t%d\t\t\t%d\n", processes[i].pid,
-           processes[i].startingTime, processes[i].completionTime,
-           processes[i].turnaroundTime, processes[i].waitingTime);
+      "\nProcess\tArrival Time\tBurst Time\tStart Time\tCompletion "
+      "Time\tTurnaround Time\tWaiting Time\n");
+  int current_time = 0;
+  for (int i = 0; i < num_processes; i++) {
+    current_time = current_time > processes[i].arrival_time
+                       ? current_time
+                       : processes[i].arrival_time;
+
+    processes[i].start_time = current_time;
+    processes[i].completion_time = current_time + processes[i].burst_time;
+
+    processes[i].turnaround_time =
+        processes[i].completion_time - processes[i].arrival_time;
+    processes[i].waiting_time =
+        processes[i].start_time - processes[i].arrival_time;
+
+    avg_TAT += processes[i].turnaround_time;
+    avg_WT += processes[i].waiting_time;
+    // Update the current time
+    current_time += processes[i].burst_time;
+
+    printf("%d\t%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n", processes[i].id,
+           processes[i].arrival_time, processes[i].burst_time,
+           processes[i].start_time, processes[i].completion_time,
+           processes[i].turnaround_time, processes[i].waiting_time);
   }
 
-  return 0;
+  printf("\nAverage Turnaround Time is: %f\nAverage Waiting Time is: %f",
+         avg_TAT / num_processes, avg_WT / num_processes);
 }

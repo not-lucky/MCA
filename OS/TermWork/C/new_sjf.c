@@ -2,6 +2,7 @@
 // scheduling algorithm and calculates the start time, completion time,
 // turnaround time, and waiting time for each process:
 
+#include <limits.h>
 #include <stdio.h>
 
 struct Process {
@@ -12,6 +13,7 @@ struct Process {
   int completion_time;
   int turnaround_time;
   int waiting_time;
+  int completed;
 };
 
 int main() {
@@ -27,6 +29,7 @@ int main() {
     printf("Enter id, arrival time, and burst time for process %d: ", i + 1);
     scanf("%d%d%d", &processes[i].id, &processes[i].arrival_time,
           &processes[i].burst_time);
+    processes[i].completed = 0;
   }
 
   for (int i = 0; i < num_processes - 1; i++) {
@@ -41,39 +44,50 @@ int main() {
     processes[min_ind] = temp;
   }
 
-  double avg_TAT = 0, avg_WT = 0;
-  // Schedule the processes using FCFS
   printf(
       "\nProcess\tArrival Time\tBurst Time\tStart Time\tCompletion "
       "Time\tTurnaround Time\tWaiting Time\n");
+
+  here:
   int current_time = 0;
   for (int i = 0; i < num_processes; i++) {
-    // Wait for the current process to arrive
+    if (processes[i].completed) {
+      continue;
+    }
+
     current_time = current_time > processes[i].arrival_time
                        ? current_time
                        : processes[i].arrival_time;
-    // Set the start time and completion time for the current process
-    processes[i].start_time = current_time;
-    processes[i].completion_time = current_time + processes[i].burst_time;
-    // Calculate the turnaround time and waiting time for the current process
-    processes[i].turnaround_time =
-        processes[i].completion_time - processes[i].arrival_time;
-    processes[i].waiting_time =
-        processes[i].start_time - processes[i].arrival_time;
-    // To calculate average
-    avg_TAT += processes[i].turnaround_time;
-    avg_WT += processes[i].waiting_time;
+
+    struct Process to_work = processes[i];
+    int min_burst = INT_MAX;
+
+    for (int j = i + 1; j < num_processes; j++) {
+      if (processes[j].completed == 0 &&
+          processes[j].arrival_time <= current_time) {
+        if (processes[j].burst_time < min_burst) {
+          to_work = processes[j];
+        }
+      }
+    }
+
+    to_work.start_time = current_time;
+    to_work.completion_time = current_time + to_work.burst_time;
+    to_work.turnaround_time = to_work.completion_time - to_work.arrival_time;
+    to_work.waiting_time = to_work.start_time - to_work.arrival_time;
     // Update the current time
-    current_time += processes[i].burst_time;
-    // Print the process information
-    printf("%d\t%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n", processes[i].id,
-           processes[i].arrival_time, processes[i].burst_time,
-           processes[i].start_time, processes[i].completion_time,
-           processes[i].turnaround_time, processes[i].waiting_time);
+    current_time += to_work.burst_time;
+    to_work.completed = 1;
+    if (to_work.id != processes[i].id) {
+        i--;
+    }
+    printf("%d\t%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n", to_work.id,
+           to_work.arrival_time, to_work.burst_time, to_work.start_time,
+           to_work.completion_time, to_work.turnaround_time,
+           to_work.waiting_time);
   }
 
-  printf("\nAverage Turnaround Time is: %f\nAverage Waiting Time is: %f",
-         avg_TAT / num_processes, avg_WT / num_processes);
+  goto here;
 
   return 0;
 }

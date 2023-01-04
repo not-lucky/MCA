@@ -1,76 +1,85 @@
-// Here is a C program that implements the First-Come, First-Served (FCFS) CPU
-// scheduling algorithm and calculates the start time, completion time,
-// turnaround time, and waiting time for each process:
-
+#include <stdbool.h>
 #include <stdio.h>
-
-struct Process {
-  int id;
-  int arrival_time;
-  int burst_time;
-  int start_time;
-  int completion_time;
-  int turnaround_time;
-  int waiting_time;
-};
-
-int main() {
-  int num_processes;
-
-  printf("Enter the number of processes: ");
-  scanf("%d", &num_processes);
-
-  struct Process processes[num_processes];
-
-  // Read the process information
-  for (int i = 0; i < num_processes; i++) {
-    printf("Enter id, arrival time, and burst time for process %d: ", i + 1);
-    scanf("%d%d%d", &processes[i].id, &processes[i].arrival_time,
-          &processes[i].burst_time);
+void main() {
+  printf("Enter the number of process: ");
+  int n;
+  scanf("%d", &n);
+  int cpu[n];
+  int at[n];
+  int temp;
+  int pro[n];
+  bool ar[n];
+  for (int i = 0; i < n; ++i) {
+    printf("Process %d \nEnter the Arrival time : ", i + 1);
+    scanf("%d", &at[i]);
+    printf("Enter the CPU BURST time : ");
+    scanf("%d", &cpu[i]);
+    pro[i] = i + 1;
+    ar[i] = false;
+    printf("\n");
   }
-
-  for (int i = 0; i < num_processes - 1; i++) {
-    int min_ind = i;
-    for (int j = i + 1; j < num_processes; j++) {
-      if (processes[j].arrival_time < processes[min_ind].arrival_time) {
-        min_ind = j;
+  for (int i = 0; i < n; ++i) {
+    for (int k = i + 1; k < n; ++k) {
+      if (cpu[i] > cpu[k]) {
+        temp = cpu[i];
+        cpu[i] = cpu[k];
+        cpu[k] = temp;
+        temp = at[i];
+        at[i] = at[k];
+        at[k] = temp;
+        temp = pro[i];
+        pro[i] = pro[k];
+        pro[k] = temp;
+      } else if (cpu[i] == cpu[k]) {
+        if (at[i] > at[k]) {
+          temp = cpu[i];
+          cpu[i] = cpu[k];
+          cpu[k] = temp;
+          temp = at[i];
+          at[i] = at[k];
+          at[k] = temp;
+          temp = pro[i];
+          pro[i] = pro[k];
+          pro[k] = temp;
+        }
       }
     }
-    struct Process temp = processes[i];
-    processes[i] = processes[min_ind];
-    processes[min_ind] = temp;
   }
 
-  // Schedule the processes using SJF
-  printf(
-      "\nProcess\tArrival Time\tBurst Time\tStart Time\tCompletion "
-      "Time\tTurnaround Time\tWaiting Time\n");
-  int current_time = 0;
-  for (int i = 0; i < num_processes; i++) {
-    // Wait for the current process to arrive
-    current_time = current_time > processes[i].arrival_time
-                       ? current_time
-                       : processes[i].arrival_time;
-    // Set the start time and completion time for the current process
-    struct Process to_work = processes[i];
-    for (int j = i + 1; j < num_processes; j++) {
-        if 
+  int mi = at[0];
+  int ii;
+  for (int i = 0; i < n; ++i) {
+    if (mi > at[i]) {
+      mi = at[i];
+      ii = i;
     }
-    processes[i].start_time = current_time;
-    processes[i].completion_time = current_time + processes[i].burst_time;
-    // Calculate the turnaround time and waiting time for the current process
-    processes[i].turnaround_time =
-        processes[i].completion_time - processes[i].arrival_time;
-    processes[i].waiting_time =
-        processes[i].start_time - processes[i].arrival_time;
-    // Update the current time
-    current_time += processes[i].burst_time;
-    // Print the process information
-    printf("%d\t%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n", processes[i].id,
-           processes[i].arrival_time, processes[i].burst_time,
-           processes[i].start_time, processes[i].completion_time,
-           processes[i].turnaround_time, processes[i].waiting_time);
   }
+  ar[ii] = true;
+  int tt = cpu[ii] + at[ii];
 
-  return 0;
+  for (int k = 0; k < n; ++k) {
+    printf("Process %d  Arrival time %d : CPU BURST %d \n", pro[k], at[k],
+           cpu[k]);
+  }
+  printf("\n");
+  printf(
+      "process %d || Start Time %d || END Time %d ||Waiting Time %d|| "
+      "TurnAround Time %d\n",
+      pro[ii], at[ii], tt, 0, cpu[ii]);
+
+  for (int i = 0; i < n; ++i) {
+    for (int p = 0; p < n; ++p) {
+      if (ar[p] == true) {
+        continue;
+      } else if (tt >= at[p]) {
+        ar[p] = true;
+        printf(
+            "process %d || Start Time %d || END Time %d ||Waiting Time %d || "
+            "TurnAround time %d \n",
+            pro[p], tt, tt + cpu[p], tt - at[p], tt - at[p] + cpu[p]);
+        tt = tt + cpu[p];
+        break;
+      }
+    }
+  }
 }
