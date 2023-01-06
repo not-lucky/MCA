@@ -1,0 +1,54 @@
+echo "Enter size of first array: "
+read n1
+
+echo "Enter elements of the first array: "
+for ((i=0;i<n1;i++))
+do
+  read arr1[$i]
+done
+
+echo "Enter size of second array: "
+read n2
+
+echo "Enter elements of the second array: "
+for ((i=0;i<n2;i++))
+do
+  read arr2[$i]
+done
+
+for ((i=0;i<n1;i++))
+do
+  arr3[$i]=${arr1[$i]}
+done
+
+for ((i=0;i<n2;i++))
+do
+  arr3[$((n1+i))]=${arr2[$i]}
+done
+
+echo "Meged array is: "
+for ((i=0;i<n1+n2;i++))
+do
+  echo ${arr3[$i]}
+done
+
+for ((i=0; i<n1+n2; i++)); do
+  min_index=$i
+  for ((j=i+1; j<n1+n2; j++)); do
+    if [[ ${arr3[j]} < ${arr3[min_index]} ]]; then
+      min_index=$j
+    fi
+  done
+  echo ""
+  echo $i
+
+  temp=${arr3[i]}
+  arr3[i]=${arr3[min_index]}
+  arr3[min_index]=$temp
+done
+
+echo "Merged sorted array is: "
+for ((i=0;i<n1+n2;i++))
+do
+  echo ${arr3[$i]}
+done
