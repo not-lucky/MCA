@@ -16,9 +16,7 @@ void sort(int *a, int n) {
 
 void rearrange(int *a, int n) {
   sort(a, n);
-
   int temp[n];
-
   int p = 0, q = n - 1;
 
   for (int i = 0; i < n; i++) {
@@ -32,8 +30,8 @@ void rearrange(int *a, int n) {
 }
 
 int main() {
+  int n = 8;
   int a[] = {1, 2, 3, 4, 5, 6, 7, 8};
-  int n = sizeof(a) / sizeof(a[0]);
 
   rearrange(a, n);
 
