@@ -1,12 +1,15 @@
 #include <stdio.h>
 
 int main() {
-  char* s;
-  printf("Enter a string: ");
+  int n;
+  printf("Enter length of string: ");
+  scanf("%d", &n);
+  char s[n];
+  printf("Enter the string: ");
   scanf("%s", s);
 
   int i = 0;
-  int j = strlen(s) - 1;
+  int j = n - 1;
   while (i < j) {
     if (s[i] != s[j]) {
       printf("Not a palindrome\n");
@@ -15,8 +18,5 @@ int main() {
     i++;
     j--;
   }
-
   printf("Palindrome\n");
-
-  return 0;
 }
