@@ -1,0 +1,26 @@
+Boxplot:
+
+data <- c(1:5, 11:20, seq(31,50,0.1))
+boxplot(data)
+
+Scatter plot:
+
+x <- seq(0,10,0.1)
+y <- sin(x)
+plot(x, y, xlab="X-axis", ylab="Y-axis", main="Line Graph")
+
+Line graph:
+
+x <- seq(0,10,0.1)
+y <- sin(x)
+plot(x, y, type="l", xlab="X-axis", ylab="Y-axis", main="Line Graph")
+
+Pie chart:
+
+data <- c(15, 30, 45, 10)
+pie(data, labels = c("Frogs", "Hogs", "Dogs", "Logs"))
+
+Bar chart:
+
+data <- c(15, 30, 45, 10)
+barplot(data, names.arg = c("Frogs", "Hogs", "Dogs", "Logs"))

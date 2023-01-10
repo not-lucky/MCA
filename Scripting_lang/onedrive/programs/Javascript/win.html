@@ -1,44 +1,43 @@
 <html>
+
 <body>
 
-<input type="button" onClick="doClose()" value="Close">
-<input type="button" onClick="doOpen()" value="Open">
-<input type="button" onClick="doOpen1()" value="Open1">
-<button onclick="goBack()">Go Back</button>
-<button onclick="goForward()">Go Forward</button>
-<button onclick="goBack1()">Go Back 2 Pages</button>
-<a href="dom1.html">go to the web page</a>
-<script>
-function doOpen()
-{
-win=window.open(location.href);
-//The href property sets or returns the entire URL of the current page.
-window.status = "New Window!!";
-}
-function doOpen1()
-{
-var myWindow = window.open("", "MsgWindow", "width = 500, height = 500");
-myWindow.document.write("<p>This window's name is: " + myWindow.name +"Welcome to the world of web programming"+ "</p>");
-var b=document.createElement("Button");
-var t=document.createTextNode("Click");
-b.appendChild(t);
-myWindow.document.body.appendChild(b);
-}
-function doClose()
-{
-state=confirm("Current window will be closed :yes or no");
-if(state)
-window.close();
-}
-function goBack() {
-    window.history.back()
-}
-function goForward() {
-    window.history.forward()
-}
-function goBack1() {
-    window.history.go(-2)
-}
-</script>
+    <input type="button" onClick="doClose()" value="Close">
+    <input type="button" onClick="doOpen()" value="Open">
+    <input type="button" onClick="doOpen1()" value="Open1">
+    <button onclick="goBack()">Go Back</button>
+    <button onclick="goForward()">Go Forward</button>
+    <button onclick="goBack1()">Go Back 2 Pages</button>
+    <a href="dom1.html">go to the web page</a>
+    <script>
+        function doOpen() {
+            win = window.open(location.href);
+            //The href property sets or returns the entire URL of the current page.
+            window.status = "New Window!!";
+        }
+        function doOpen1() {
+            var myWindow = window.open("", "MsgWindow", "width = 500, height = 500");
+            myWindow.document.write("<p>This window's name is: " + myWindow.name + "Welcome to the world of web programming" + "</p>");
+            var b = document.createElement("Button");
+            var t = document.createTextNode("Click");
+            b.appendChild(t);
+            myWindow.document.body.appendChild(b);
+        }
+        function doClose() {
+            state = confirm("Current window will be closed :yes or no");
+            if (state)
+                window.close();
+        }
+        function goBack() {
+            window.history.back()
+        }
+        function goForward() {
+            window.history.forward()
+        }
+        function goBack1() {
+            window.history.go(-2)
+        }
+    </script>
 </body>
+
 </html>
