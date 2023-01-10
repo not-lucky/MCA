@@ -9,12 +9,13 @@
                 $("#div1").fadeIn();
                 $("#div2").fadeIn("slow");
                 $("#div3").fadeIn(3000);
-            },
-                function () {
-                    $("#div1").fadeOut();
-                    $("#div2").fadeOut("fast");
-                    $("#div3").fadeOut(1000);
-                });
+            });
+
+            $("button").click(function () {
+                $("#div1").fadeOut();
+                $("#div2").fadeOut("fast");
+                $("#div3").fadeOut(1000);
+            });
         });  
     </script>
 </head>
