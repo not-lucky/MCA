@@ -4,9 +4,7 @@ void sort(int *a, int n) {
   for (int i = 0; i < n - 1; i++) {
     int min_ind = i;
     for (int j = i + 1; j < n; j++) {
-      if (a[j] < a[min_ind]) {
-        min_ind = j;
-      }
+      if (a[j] < a[min_ind]) min_ind = j;
     }
     int temp = a[i];
     a[i] = a[min_ind];
@@ -28,8 +26,12 @@ void rearrange(int *a, int n) {
 }
 
 int main() {
-  int n = 8;
-  int a[] = {1, 2, 3, 4, 5, 6, 7, 8};
+  int n;
+  printf("Enter size of array: ");
+  scanf("%d", &n);
+  int a[n];
+  printf("Enter the elements of the array:\n");
+  for (int i = 0; i < n; i++) scanf("%d", &a[i]);
 
   rearrange(a, n);
 

@@ -9,19 +9,6 @@ struct node {
 struct node* HEAD = NULL;
 int size = 0;
 
-void printList() {
-  struct node* ptr = HEAD;
-  printf("\nLINKED LIST: \n");
-
-  while (ptr != NULL) {
-    printf("%d ", ptr->data);
-    ptr = ptr->next;
-  }
-
-  if (size == 0) printf("LINKED LIST IS EMPTY.\n");
-  printf("\n");
-}
-
 // int numOfNodes() {
 //   struct node* link = HEAD;
 //   int len = 0;
@@ -32,6 +19,10 @@ void printList() {
 //   }
 //   return len;
 // }
+
+void insertBeginning(int data) { insertPos(1, data); }
+
+void insertEnd(int data) { insertPos(size, data); }
 
 void insertPos(int pos, int data) {
   //   int size = numOfNodes();
@@ -63,6 +54,19 @@ void insertPos(int pos, int data) {
     link = link->next;
     current_pos++;
   }
+}
+
+void printList() {
+  struct node* ptr = HEAD;
+  printf("\nLINKED LIST: \n");
+
+  while (ptr != NULL) {
+    printf("%d ", ptr->data);
+    ptr = ptr->next;
+  }
+
+  if (size == 0) printf("LINKED LIST IS EMPTY.\n");
+  printf("\n");
 }
 
 int find(int data) {
@@ -127,6 +131,25 @@ void reverse() {
   HEAD = previous;
 }
 
+void printReverse() {
+  struct node* last = HEAD;
+  struct node* prev = HEAD;
+  if (size == 0) return;
+  while (last->next != NULL) {
+    last = last->next;
+  }
+  printf("%d -> ", last->data);
+  while (last != HEAD) {
+    prev = HEAD;
+    while (prev->next != last) {
+      prev = prev->next;
+    }
+    last = prev;
+    printf("%d -> ", last->data);
+  }
+  // printf("%d", HEAD->data);
+}
+
 int main() {
   printList();
   insertPos(1, 10);
@@ -135,8 +158,5 @@ int main() {
   insertPos(3, 100);
   insertPos(5, 200);
   printList();
-  delete (120);
-  printList();
-  reverse();
-  printList();
+  printReverse();
 }
