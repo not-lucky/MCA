@@ -2,6 +2,7 @@
     "files.associations": {
         "stdio.h": "c",
         "*.rmd": "markdown",
-        "random": "c"
+        "random": "c",
+        "typeinfo": "c"
     }
 }

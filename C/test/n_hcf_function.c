@@ -14,9 +14,9 @@ int main() {
   for (int i = 0; i < n; i++) {
     scanf("%d", &arr[i]);
   }
-  int hcf = hcf_r(arr[0], arr[1]);
+  int hcf = arr[0];
 
-  for (int i = 2; i < n; i++) {
+  for (int i = 1; i < n; i++) {
     hcf = hcf_r(hcf, arr[i]);
   }
   printf("%d", hcf);

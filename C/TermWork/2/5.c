@@ -1,25 +1,42 @@
 #include <stdio.h>
 
 void countFreq(int arr[], int n) {
-  int visited[n];
-  for (int i = 0; i < n; i++) visited[i] = 0;
-
+  int count[n];
   for (int i = 0; i < n; i++) {
-    if (visited[i] == 1) continue;
+    count[i] = -1;
+  }
 
-    int count = 1;
+  for (int i = 0; i < n - 1; i++) {
+    if (count[i] == 0) continue;
+    int c = 1;
     for (int j = i + 1; j < n; j++) {
       if (arr[i] == arr[j]) {
-        visited[j] = 1;
-        count++;
+        count[j] = 0;
+        c++;
       }
     }
-    printf("%d: %d\n", arr[i], count);
+    count[i] = c;
+  }
+  printf("\nUnique Elements are:\n");
+  for (int i = 0; i < n; i++) {
+    if (count[i] == 1) printf("%d, ", arr[i]);
+  }
+  printf("\nDuplicate Elements are:\n");
+  for (int i = 0; i < n; i++) {
+    if (count[i] > 1) printf("%d, ", arr[i]);
+  }
+  printf("\nOccurence are each numbers are:\n");
+  for (int i = 0; i < n; i++) {
+    if (count[i] != 0) printf("%d: %d\n", arr[i], count[i]);
   }
 }
 
 int main() {
-  int arr[] = {10, 20, 20, 10, 10, 20, 5, 20};
-  int n = sizeof(arr) / sizeof(arr[0]);
+  int n;
+  printf("Enter size of array: ");
+  scanf("%d", &n);
+  int arr[n];
+  printf("Enter elements of array: \n");
+  for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
   countFreq(arr, n);
 }

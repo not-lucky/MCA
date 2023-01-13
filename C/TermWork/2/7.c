@@ -18,14 +18,18 @@ int binary_search(int a[], int n, int x) {
 }
 
 int main() {
-  int N = 10;
-  int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  int n;
+  printf("Enter size of array: ");
+  scanf("%d", &n);
+  int arr[n];
+  printf("Enter elements of array: \n");
+  for (int i = 0; i < n; i++) scanf("%d", &arr[i]);
 
   int x;
   printf("Enter a number to search for: ");
   scanf("%d", &x);
 
-  int index = binary_search(a, N, x);
+  int index = binary_search(arr, n, x);
   if (index == -1) {
     printf("Number not found\n");
   } else {

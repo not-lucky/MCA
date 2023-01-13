@@ -10,7 +10,7 @@ int main() {
 
   int i = 0;
   int j = n - 1;
-  while (i < j) {
+  while (i <= j) {
     if (s[i] != s[j]) {
       printf("Not a palindrome\n");
       return 0;

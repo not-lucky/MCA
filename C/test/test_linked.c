@@ -147,7 +147,7 @@ void printReverse() {
     last = prev;
     printf("%d -> ", last->data);
   }
-  // printf("%d", HEAD->data);
+  printf("NULL");
 }
 
 int main() {

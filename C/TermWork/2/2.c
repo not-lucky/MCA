@@ -39,5 +39,6 @@ int main() {
 
   rearrange(a, n);
 
+  printf("Rearranged array is:\n");
   for (int i = 0; i < n; i++) printf("%d ", a[i]);
 }
