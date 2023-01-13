@@ -4,9 +4,9 @@ void selectionSort(int a[], int N) {
   for (int i = 0; i < N - 1; i++) {
     int min_index = i;
     for (int j = i + 1; j < N; j++) {
-        if (a[j] < a[min_index]) {
-            min_index = j;
-        }
+      if (a[j] < a[min_index]) {
+        min_index = j;
+      }
     }
     int temp = a[i];
     a[i] = a[min_index];
@@ -38,7 +38,7 @@ int main() {
   }
 
   selectionSort(a, N);
-//   insertionSort(a, N);
+  //   insertionSort(a, N);
 
   printf("\nSorted numbers: ");
   for (int i = 0; i < N; i++) {
