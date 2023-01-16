@@ -1,12 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int rever(int num) {
-  static int bin = 0;
-  if (num == 0) return bin;
-  bin = bin * 10 + num % 2;
-  return rever(num / 2);
-}
+char func(char i) { printf("%c ", i); }
 
-int main(int argc, char *argv[]) {
-  printf("%d", rever(21));
+int main() {
+  int* ar = (int*) malloc(10*4);
+  char* st = (char*) malloc(10*1);
+  double* dr = (double*) malloc(10*(sizeof(double)));
+
+  int* arc = (int*) calloc(10, 4);
+  char* stc = (char*) calloc(10, 1);
+  double* drc = (double*) calloc(10, sizeof(double));
+
+  for (int i = 0; i< 10; i++) {
+    printf("%d, %c, %lf\t%d, %d, %lf\n", ar[i], st[i], dr[i], arc[i], stc[i], drc[i]);
+  }
+
 }

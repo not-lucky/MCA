@@ -1,4 +1,11 @@
 #include <stdio.h>
+#pragma startup a;
+#pragma exit a;
+
+void a() {
+  printf("uwu");
+  return;
+}
 
 int main() {
   int n = 5;
