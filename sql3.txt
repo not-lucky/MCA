@@ -1,0 +1,56 @@
+CREATE TABLE Course (
+  Course_Code NUMBER PRIMARY KEY,
+  Course_Name VARCHAR2(255) NOT NULL,
+  Course_Fees NUMBER DEFAULT 60000,
+  Course_Semester NUMBER CHECK (Course_Semester >= 1),
+  Dept VARCHAR2(255) NOT NULL
+);
+
+
+INSERT INTO Course (Course_Code, Course_Name, Course_Fees, Course_Semester, Dept) VALUES (101, 'MCA', 80000, 6, 'MCA');
+INSERT INTO Course (Course_Code, Course_Name, Course_Fees, Course_Semester, Dept) VALUES (102, 'MBA', 50000, 4, 'MGMT');
+INSERT INTO Course (Course_Code, Course_Name, Course_Fees, Course_Semester, Dept) VALUES (103, 'Btech', 45000, 8, 'ENGG');
+INSERT INTO Course (Course_Code, Course_Name, Course_Fees, Course_Semester, Dept) VALUES (104, 'BCA', 30000, 6, 'MCA');
+INSERT INTO Course (Course_Code, Course_Name, Course_Fees, Course_Semester, Dept) VALUES (105, 'BSCIT', 25000, 6, 'ALLIED');
+INSERT INTO Course (Course_Code, Course_Name, Course_Fees, Course_Semester, Dept) VALUES (106, 'MSCIT', 35000, 6, 'ALLIED');
+INSERT INTO Course (Course_Code, Course_Name, Course_Fees, Course_Semester, Dept) VALUES (107, 'BBA', 35000, 6, 'MGMT');
+INSERT INTO Course (Course_Code, Course_Name, Course_Fees, Course_Semester, Dept) VALUES (108, 'OCP', 3000, 2, 'MCA');
+
+
+CREATE TABLE Student (
+    RollNo NUMBER PRIMARY KEY,
+    Name VARCHAR2(50) NOT NULL,
+    DOB DATE,
+    City VARCHAR2(50) DEFAULT 'Dehradun'
+);
+
+-- Insert data into Student table
+INSERT INTO Student (RollNo, Name, DOB, City) VALUES (1, 'Amit', TO_DATE('1-Jan-77', 'dd-Mon-yy'), 'Bombay');
+INSERT INTO Student (RollNo, Name, DOB, City) VALUES (2, 'Rohit', TO_DATE('11-Sep-78', 'dd-Mon-yy'), 'Dehradun');
+INSERT INTO Student (RollNo, Name, DOB, City) VALUES (3, 'Shweta', TO_DATE('21-Feb-81', 'dd-Mon-yy'), 'Dehradun');
+INSERT INTO Student (RollNo, Name, DOB, City) VALUES (4, 'Puneet', TO_DATE('5-Aug-72', 'dd-Mon-yy'), 'Goa');
+INSERT INTO Student (RollNo, Name, DOB, City) VALUES (5, 'Shashwat', TO_DATE('7-Aug-70', 'dd-Mon-yy'), 'Haridwar');
+
+
+
+CREATE TABLE Register (
+    Roll_no NUMBER,
+    Course_Code NUMBER,
+    FOREIGN KEY (Roll_no) REFERENCES Student (RollNo),
+    FOREIGN KEY (Course_Code) REFERENCES Course (Course_Code)
+);
+
+
+INSERT INTO Register (Roll_No, Course_Code) VALUES (4, 103);
+INSERT INTO Register (Roll_No, Course_Code) VALUES (3, 101);
+INSERT INTO Register (Roll_No, Course_Code) VALUES (2, 101);
+INSERT INTO Register (Roll_No, Course_Code) VALUES (9, 222);
+
+
+
+
+
+
+
+
+SELECT * FROM user_constraints;

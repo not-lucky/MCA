@@ -1,0 +1,33 @@
+CREATE TABLE Student (
+  Roll_number NUMBER(10),
+  Student_name VARCHAR2(20),
+  Father_name VARCHAR2(20),
+  Address VARCHAR2(30),
+  Dob DATE,
+  Phone_number NUMBER(15),
+  Course VARCHAR2(10)
+);
+
+
+INSERT INTO Student (Roll_number, Student_name, Father_name, Address, Dob, Phone_number, Course) VALUES (101, 'Ankit', 'Samir', 'Dehradun', TO_DATE('01-MAR-1997', 'DD-MON-YYYY'), 9898772212, 'MCA');
+INSERT INTO Student (Roll_number, Student_name, Father_name, Address, Dob, Phone_number, Course) VALUES (102, 'Sam', 'Jatin', 'Delhi', TO_DATE('07-APR-1999', 'DD-MON-YYYY'), 2222290909, 'MScIT');
+INSERT INTO Student (Roll_number, Student_name, Father_name, Address, Dob, Phone_number, Course) VALUES (103, 'Megha', 'Mayank', null, TO_DATE('05-MAY-1999', 'DD-MON-YYYY'), 4433309099, 'MCA');
+INSERT INTO Student (Roll_number, Student_name, Father_name, Address, Dob, Phone_number, Course) VALUES (104, 'Deepak', 'Dhiren', 'Meerut', TO_DATE('10-AUG-1999', 'DD-MON-YYYY'), 2234455644, 'BTech');
+INSERT INTO Student (Roll_number, Student_name, Father_name, Address, Dob, Phone_number, Course) VALUES (105, 'Ashish', 'Viraj', 'Dehradun', null, 1234566789, 'MCA');
+
+
+DESCRIBE Student;
+SELECT * FROM Student;
+SELECT Roll_number, Student_name FROM Student;
+SELECT * FROM Student WHERE Roll_number IN (101, 104);
+SELECT * FROM Student WHERE Course = 'MCA';
+
+
+
+SELECT * FROM Student ORDER BY Student_name;
+SELECT * FROM Student WHERE Address = 'Dehradun';
+SELECT * FROM Student WHERE Roll_number = 105 AND Course = 'MCA';
+SELECT Roll_number AS "Student Information", CONCAT(Student_name, ' ', Father_name) AS "Student Information"
+FROM Student;
+SELECT sysdate FROM dual;
+SELECT table_name FROM user_tables;

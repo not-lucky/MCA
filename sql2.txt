@@ -1,0 +1,81 @@
+CREATE TABLE Salesmen (
+  Snum NUMBER(10),
+  Sname VARCHAR2(20),
+  City VARCHAR2(20),
+  Commission NUMBER(7,3)
+);
+
+
+INSERT INTO Salesmen (Snum, Sname, City, Commission) VALUES (1001, 'Piyush', 'London', 12);
+INSERT INTO Salesmen (Snum, Sname, City, Commission) VALUES (1002, 'Sejal', 'Surat', 13);
+INSERT INTO Salesmen (Snum, Sname, City, Commission) VALUES (1004, 'Miti', 'London', 11);
+INSERT INTO Salesmen (Snum, Sname, City, Commission) VALUES (1007, 'Rajesh', 'Baroda', 15);
+INSERT INTO Salesmen (Snum, Sname, City, Commission) VALUES (1003, 'Anand', 'New Delhi', 10);
+
+
+CREATE TABLE Customer (
+  Cnum NUMBER(7),
+  Cname VARCHAR2(20),
+  City VARCHAR2(30),
+  Rating NUMBER(5),
+  Snum NUMBER(10)
+);
+
+
+INSERT INTO Customer (Cnum, Cname, City, Rating, Snum) VALUES (2001, 'Harsh', 'London', 100, 1001);
+INSERT INTO Customer (Cnum, Cname, City, Rating, Snum) VALUES (2002, 'Gita', 'Rome', 200, 1003);
+INSERT INTO Customer (Cnum, Cname, City, Rating, Snum) VALUES (2003, 'Lalit', 'Surat', 200, 1002);
+INSERT INTO Customer (Cnum, Cname, City, Rating, Snum) VALUES (2004, 'Govind', 'Bombay', 300, 1002);
+INSERT INTO Customer (Cnum, Cname, City, Rating, Snum) VALUES (2006, 'Chirag', 'London', 100, 1001);
+INSERT INTO Customer (Cnum, Cname, City, Rating, Snum) VALUES (2008, 'Chinmay', 'Surat', 300, 1007);
+INSERT INTO Customer (Cnum, Cname, City, Rating, Snum) VALUES (2007, 'Pratik', 'Rome', 100, 1004);
+
+
+CREATE TABLE Orders (
+  Onum NUMBER(10),
+  Amount NUMBER(10,3),
+  Odate DATE,
+  Cnum NUMBER(10),
+  Snum NUMBER(10)
+);
+
+
+INSERT INTO Orders (Onum, Amount, Odate, Cnum, Snum) VALUES (3001, 18.69, TO_DATE('10/03/97', 'DD/MM/YY'), 2008, 1007);
+INSERT INTO Orders (Onum, Amount, Odate, Cnum, Snum) VALUES (3003, 767.19, TO_DATE('10/03/97', 'DD/MM/YY'), 2001, 1001);
+INSERT INTO Orders (Onum, Amount, Odate, Cnum, Snum) VALUES (3002, 1900.10, TO_DATE('10/03/97', 'DD/MM/YY'), 2007, 1004);
+INSERT INTO Orders (Onum, Amount, Odate, Cnum, Snum) VALUES (3005, 5160.45, TO_DATE('10/03/97', 'DD/MM/YY'), 2003, 1002);
+INSERT INTO Orders (Onum, Amount, Odate, Cnum, Snum) VALUES (3006, 1098.16, TO_DATE('10/03/97', 'DD/MM/YY'), 2008, 1007);
+INSERT INTO Orders (Onum, Amount, Odate, Cnum, Snum) VALUES (3009, 1713.23, TO_DATE('10/04/97', 'DD/MM/YY'), 2002, 1003);
+INSERT INTO Orders (Onum, Amount, Odate, Cnum, Snum) VALUES (3007, 75.75, TO_DATE('10/04/97', 'DD/MM/YY'), 2004, 1002);
+
+
+
+
+
+SELECT Onum, Amount, Odate FROM Orders;
+SELECT * FROM Customer WHERE Snum = 1001;
+SELECT City, Sname, Snum, Commission FROM Salesmen ORDER BY City, Sname, Snum, Commission;
+SELECT Rating, Cname FROM Customer WHERE City = 'Surat';
+SELECT * FROM Orders WHERE Amount > 1000;
+
+
+SELECT DISTINCT Snum FROM Orders;
+SELECT Sname, City FROM Salesmen WHERE City = 'London' AND Commission > 10;
+SELECT * FROM Customer WHERE Rating > 100 OR City = 'Rome';
+SELECT * FROM Orders WHERE Amount > 1000 AND NOT (Snum < 1006 AND Odate = TO_DATE('10/03/97', 'DD/MM/YY'));
+SELECT * FROM Orders WHERE Odate IN (TO_DATE('03/03/97', 'DD/MM/YY'), TO_DATE('04/03/97', 'DD/MM/YY'), TO_DATE('10/03/97', 'DD/MM/YY'));
+
+
+SELECT CNUM, CNAME, CITY, RATING*12 AS ANNUAL_RATING FROM CUSTOMER;
+SELECT cname || ', ' || city AS "Customer Information" FROM customer;
+SELECT sname || ' belongs to ' || city AS "Supplier Information" FROM salesmen;
+SELECT * FROM orders ORDER BY amount ASC;
+
+
+SELECT * FROM Customer WHERE Cnum >= 2002 AND Cnum <= 2008;
+SELECT * FROM Salesmen WHERE City IN ('London', 'Surat', 'New Delhi');
+SELECT * FROM Customer WHERE Cname LIKE 'C%';
+SELECT * FROM Customer WHERE Cname LIKE '%d';
+SELECT * FROM Customer WHERE Cname LIKE 'A%' OR Cname LIKE 'G%';
+SELECT * FROM Orders WHERE Amount IS NULL;
+SELECT * FROM Salesmen WHERE Sname LIKE '%a%';
